@@ -1,0 +1,47 @@
+version: '3.9'
+services:
+  backend:
+    restart: always
+    build:
+      dockerfile: Dockerfile
+      context: ./backend
+    volumes:
+      - ./backend:/app
+    command: reflex -r "\.go$$" -s -- sh -c "go run ./"
+    environment:
+      - PGUSER=$PGUSER
+      - PGHOST=$PGHOST
+      - PGDATABASE=$PGDATABASE
+      - PGPASSWORD=$PGPASSWORD
+      - PGPORT=$PGPORT
+      - COFFEEADMINNAME=$COFFEEADMINNAME
+      - COFFEEADMINPASSWORD=$COFFEEADMINPASSWORD
+    healthcheck:
+      test: curl --fail http://localhost:8080/ping || exit 1
+      interval: 30s
+      timeout: 2s
+      retries: 3
+      start_period: 10s
+  frontend:
+    restart: always
+    build:
+      dockerfile: Dockerfile
+      context: ./frontend
+    volumes:
+      - /app/node_modules
+      - ./frontend:/app
+    environment:
+      - WDS_SOCKET_PORT=0
+    depends_on:
+      backend:
+        condition: service_healthy
+  nginx:
+    restart: always
+    build:
+      dockerfile: Dockerfile
+      context: ./nginx
+    ports:
+      - '80:80'
+    depends_on:
+      backend:
+        condition: service_healthy
