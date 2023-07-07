@@ -3,6 +3,7 @@ import Axios from 'axios';
 import Container from './Container.js';
 import './../../styles.css';
 import './../css/main.css';
+import coffee_cup from './../../../assets/coffee_cup.png'
 
 class CoffeeMain extends React.Component {
     constructor(props) {
@@ -40,7 +41,7 @@ class CoffeeMain extends React.Component {
             <div className={"mainCoffee"}>
                 <h1>Is Leo at Think Coffee?</h1>
                 <div className={"iconContainerCoffee"}>
-                    <img src={"./../../../assets/coffee_cup.png"} alt={"Coffee Cup Icon"}/>
+                    <img className={"iconCoffee"} src={coffee_cup} alt={"Coffee Cup Icon"}/>
                 </div>
             </div>
         )

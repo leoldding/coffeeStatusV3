@@ -1,21 +1,23 @@
 .mainCoffee h1 {
     font-size: 2.3rem;
-    margin: 30px 0;
+    margin: 5% 0;
     text-align: center;
 }
 
-.mainCoffee p:nth-child(1) {
-    font-size: 1.6rem;
-    margin: 13% auto;
+.iconContainerCoffee {
+    background-color: #77DD77;
+    border: 5px #2C2C2C solid;
+    border-radius: 50%;
+    height: 220px;
+    width: 220px;
+    margin: 12% auto;
 }
 
-.mainCoffee p:nth-child(2) {
-    font-size: 1.2rem;
-    margin: 0 auto;
-}
-
-.statusContainerCoffee {
-    margin: 50px auto;
+.iconCoffee {
+    display: block;
+    height: 160px;
+    width: 160px;
+    margin: 20px auto 30px;
 }
 
 @media (min-width: 769px) {
@@ -23,12 +25,16 @@
         font-size: 6rem;
     }
 
-    .mainCoffee p:nth-child(1) {
-        font-size: 5rem;
+    .iconContainerCoffee {
+        height: 350px;
+        width: 350px;
+        margin: 8% auto;
     }
 
-    .mainCoffee p:nth-child(2) {
-        font-size: 3rem;
-        margin: 3% auto;
+    .iconCoffee {
+        height: 256px;
+        width: 256px;
+        margin: 35px auto 48px;
     }
+
 }
