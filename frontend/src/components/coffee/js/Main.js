@@ -39,18 +39,8 @@ class CoffeeMain extends React.Component {
         return (
             <div className={"mainCoffee"}>
                 <h1>Is Leo at Think Coffee?</h1>
-                <div className={"statusContainerCoffee"}>
-                    {this.state.mobile ?
-                        <div>
-                            <Container status={this.state.status} substatus={this.state.substatus} textAndColor={'Yes'}/>
-                            <Container status={this.state.status} substatus={this.state.substatus} textAndColor={'En Route'}/>
-                            <Container status={this.state.status} substatus={this.state.substatus} textAndColor={'No'}/>
-                        </div>
-                        :
-                        <div>
-                            <Container status={this.state.status} substatus={this.state.substatus} textAndColor={''}/>
-                        </div>
-                    }
+                <div className={"iconContainerCoffee"}>
+                    <img src={"./../../../assets/coffee_cup.png"} alt={"Coffee Cup Icon"}/>
                 </div>
             </div>
         )
