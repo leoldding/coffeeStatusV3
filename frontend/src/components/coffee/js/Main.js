@@ -1,6 +1,7 @@
 import React from 'react';
 import Axios from 'axios';
 import Container from './Container.js';
+import coffee_cup from './../../../assets/coffee_cup.png'
 import './../../styles.css';
 import './../css/main.css';
 
@@ -13,6 +14,9 @@ class CoffeeMain extends React.Component {
     };
 
     async componentDidMount() {
+        var icon = document.getElementById("icon")
+        icon.href = coffee_cup
+
         try {
             var data
             await Axios.get("/backend/coffeeRetrieveStatus")
