@@ -37,10 +37,10 @@ class CoffeeAdmin extends React.Component {
         event.preventDefault();
 
         if (this.state.username === "") {
-            this.setState({usernameError: "Username can't be empty!", passwordError: "",});
+            this.setState({usernameError: "Required", passwordError: "",});
             this.usernameFocus.current.focus();
         } else if (this.state.password === "") {
-            this.setState({usernameError: "", passwordError: "Password can't be empty!",});
+            this.setState({usernameError: "", passwordError: "Required",});
             this.passwordFocus.current.focus();
         } else {
             try {
@@ -52,10 +52,10 @@ class CoffeeAdmin extends React.Component {
 
             } catch (err) {
                 if (err.response.status === 400) {
-                    this.setState({usernameError: "User does not exist!", passwordError: "",});
+                    this.setState({usernameError: "Invalid User", passwordError: "",});
                     this.usernameFocus.current.focus();
                 } else if (err.response.status === 401) {
-                    this.setState({usernameError: "", passwordError: "Incorrect password!"});
+                    this.setState({usernameError: "", passwordError: "Invalid Password"});
                     this.passwordFocus.current.focus();
                 } else {
                     console.log(err)
@@ -80,7 +80,7 @@ class CoffeeAdmin extends React.Component {
     statusSubmit = async (event) => {
         event.preventDefault();
 
-        var validStatuses = ["Yes", "En Route", "No"]
+        var validStatuses = ["yes", "enroute", "no"]
 
         if (this.state.status === "") {
             this.setState({statusError: "Status can't be empty!", successMessage: "",})
@@ -114,13 +114,16 @@ class CoffeeAdmin extends React.Component {
                     <h1>Admin Login</h1>
                     <div className={"formContainerCoffee"}>
                         <form onSubmit={this.credentialSubmit}>
-                            <h2>Login Here</h2>
-                            <input type={"text"} placeholder={"Username"} value={this.state.username} ref={this.usernameFocus}
-                                   onChange={(event) => this.setState({username: event.target.value})}/>
-                            <div className={"messageErrorCoffee"}>{usernameErrorMessage}</div>
-                            <input type={"password"} placeholder={"Password"} value={this.state.password} ref={this.passwordFocus}
-                                   onChange={(event) => this.setState({password: event.target.value})}/>
-                            <div className={"messageErrorCoffee"}>{passwordErrorMessage}</div>
+                            <div className={"textInput"}>
+                                <input type={"text"} placeholder={"Username"} value={this.state.username} ref={this.usernameFocus}
+                                       onChange={(event) => this.setState({username: event.target.value})}/>
+                                <div className={"messageCoffee errorCoffee"}>{usernameErrorMessage}</div>
+                            </div>
+                            <div className={"textInput"}>
+                                <input type={"password"} placeholder={"Password"} value={this.state.password} ref={this.passwordFocus}
+                                       onChange={(event) => this.setState({password: event.target.value})}/>
+                                <div className={"messageCoffee errorCoffee"}>{passwordErrorMessage}</div>
+                            </div>
                             <button>Login</button>
                         </form>
                     </div>
@@ -132,11 +135,10 @@ class CoffeeAdmin extends React.Component {
                     <h1>Admin Panel</h1>
                     <div className={"formContainerCoffee"}>
                         <form onSubmit={this.statusSubmit}>
-                            <h2>Submit Information</h2>
-                            <div className={"messageSuccessCoffee"}>{statusSuccessMessage}</div>
+                            <div className={"messageCoffee successCoffee"}>{statusSuccessMessage}</div>
                             <input type={"text"} placeholder={"Status [Yes / En Route / No]"} value={this.state.status}
                                    onChange={(event) => this.setState({status: event.target.value})}/>
-                            <div className={"messageErrorCoffee"}>{statusErrorMessage}</div>
+                            <div className={"messageCoffee errorCoffee"}>{statusErrorMessage}</div>
                             <div className={"multipleButtonsCoffee"}>
                                 <button>Submit</button>
                                 <button onClick={this.logout}>Logout</button>
