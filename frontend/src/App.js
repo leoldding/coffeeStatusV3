@@ -11,7 +11,7 @@ class App extends React.Component {
           <Router>
             <Routes>
               <Route path={"/"} element={<CoffeeMain />}></Route>
-              <Route path={"/admin"} element={<CoffeeAdmin />}></Route>
+              <Route path={"/admin_coffee"} element={<CoffeeAdmin />}></Route>
               <Route
                   path="*"
                   element={<Navigate to="/" replace />}
