@@ -1,13 +1,5 @@
-.backgroundGrayCoffee {
-    background-color: #404040;
-}
-
 .backgroundGreenCoffee {
     background-color: #77DD77;
-}
-
-.backgroundGreenCoffee > p, .backgroundRedCoffee > p, .backgroundYellowCoffee > p {
-    color: #121212;
 }
 
 .backgroundRedCoffee {
@@ -18,20 +10,30 @@
     background-color: #FFFAA0;
 }
 
-.containerCoffee {
-    border-radius: 25px;
-    text-align: center;
-    padding: 25px;
-    width: 160px;
-    margin: 20px auto;
+.iconContainerCoffee {
+    border: 5px #2C2C2C solid;
+    border-radius: 50%;
+    height: 14rem;
+    width: 14rem;
+    margin: 6rem auto;
 }
 
-
+.iconCoffee {
+    display: block;
+    height: 10rem;
+    width: 10rem;
+    margin: 1.5rem 1.75rem 2.5rem 2.25rem;
+}
 
 @media (min-width: 769px) {
-    .containerCoffee {
-        padding: 25px;
-        width: 600px;
-        margin: 9% auto;
+    .iconContainerCoffee {
+        height: 22rem;
+        width: 22rem;
+    }
+
+    .iconCoffee {
+        height: 16rem;
+        width: 16rem;
+        margin: 2.25rem 2.625rem 3.75rem 3.375rem;
     }
 }

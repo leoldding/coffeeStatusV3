@@ -1,34 +1,24 @@
 import React from 'react';
 import './../../styles.css';
 import './../css/container.css';
+import coffee_cup from './../../../assets/coffee_cup.png'
 
 class Container extends React.Component {
     constructor(props) {
         super(props);
         this.colors = {
-            'Yes': 'backgroundGreenCoffee',
-            'En Route': 'backgroundYellowCoffee',
-            'No': 'backgroundRedCoffee',
-            'None': 'backgroundGrayCoffee',
+            'yes': 'backgroundGreenCoffee',
+            'enroute': 'backgroundYellowCoffee',
+            'no': 'backgroundRedCoffee',
         }
     }
 
     render() {
-        if (this.props.textAndColor !== '') {
-            return (
-                <div className={`containerCoffee ${this.props.status === this.props.textAndColor ? this.colors[this.props.textAndColor] : this.colors['None']}`}>
-                    <p>{this.props.textAndColor}</p>
-                    <p>{this.props.status === this.props.textAndColor && this.props.substatus}</p>
-                </div>
-            )
-        }  else {
-            return (
-                <div className={`containerCoffee ${this.colors[this.props.status]}`}>
-                    <p>{this.props.status}</p>
-                    <p>{this.props.substatus}</p>
-                </div>
-            )
-        }
+        return (
+            <div className={`iconContainerCoffee ${this.colors[this.props.status]}`}>
+                <img className={"iconCoffee"} src={coffee_cup} alt={"Coffee Cup Icon"}/>
+            </div>
+        )
     }
 }
 
