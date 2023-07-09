@@ -3,27 +3,17 @@ import Axios from 'axios';
 import Container from './Container.js';
 import './../../styles.css';
 import './../css/main.css';
-import coffee_cup from './../../../assets/coffee_cup.png'
 
 class CoffeeMain extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            mobile: true,
             status: '',
             substatus: '',
         };
     };
 
     async componentDidMount() {
-        if (window.matchMedia("(min-width: 769px)").matches) {
-            this.setState({mobile: false})
-        }
-
-        window.addEventListener('resize', (event) => {
-            window.innerWidth < 768 ? this.setState({mobile: true}) : this.setState({mobile: false})
-        });
-
         try {
             var data
             await Axios.get("/backend/coffeeRetrieveStatus")
@@ -40,9 +30,7 @@ class CoffeeMain extends React.Component {
         return (
             <div className={"mainCoffee"}>
                 <h1>Is Leo at Think Coffee?</h1>
-                <div className={"iconContainerCoffee"}>
-                    <img className={"iconCoffee"} src={coffee_cup} alt={"Coffee Cup Icon"}/>
-                </div>
+                <Container status={"enroute"}/>
             </div>
         )
     }

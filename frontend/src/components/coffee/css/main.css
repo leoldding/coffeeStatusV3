@@ -1,40 +1,11 @@
 .mainCoffee h1 {
-    font-size: 2.3rem;
-    margin: 5% 0;
+    font-size: 2rem;
+    margin: 4rem 1rem;
     text-align: center;
-}
-
-.iconContainerCoffee {
-    background-color: #77DD77;
-    border: 5px #2C2C2C solid;
-    border-radius: 50%;
-    height: 220px;
-    width: 220px;
-    margin: 12% auto;
-}
-
-.iconCoffee {
-    display: block;
-    height: 160px;
-    width: 160px;
-    margin: 20px auto 30px;
 }
 
 @media (min-width: 769px) {
     .mainCoffee h1 {
-        font-size: 6rem;
+        font-size: 5rem;
     }
-
-    .iconContainerCoffee {
-        height: 350px;
-        width: 350px;
-        margin: 8% auto;
-    }
-
-    .iconCoffee {
-        height: 256px;
-        width: 256px;
-        margin: 35px auto 48px;
-    }
-
 }
