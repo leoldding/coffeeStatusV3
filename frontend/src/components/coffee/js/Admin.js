@@ -13,7 +13,6 @@ class CoffeeAdmin extends React.Component {
             usernameError: "",
             passwordError: "",
             status: "",
-            substatus: "",
             statusError: "",
             successMessage: "",
         }
@@ -88,16 +87,15 @@ class CoffeeAdmin extends React.Component {
         } else if (validStatuses.findIndex(status => {return status === this.state.status}) === -1) {
             this.setState({statusError: "Not a valid status!", successMessage: "",})
         } else {
-            this.setState({status: "", substatus: "", statusError: "",})
+            this.setState({status: "", statusError: "",})
             try {
                 await Axios.post("/backend/coffeeStatusUpdate", {
                     status: this.state.status,
-                    substatus: this.state.substatus,
                 })
                 this.setState({successMessage: "Successfully sent status!"})
             } catch(err) {
                 if (err.response.status === 401) {
-                    this.setState({loggedIn: false, status: "", substatus: "", statusError: "", successMessage: "",})
+                    this.setState({loggedIn: false, status: "", statusError: "", successMessage: "",})
                 } else {
                     console.log(err)
                 }
@@ -139,8 +137,6 @@ class CoffeeAdmin extends React.Component {
                             <input type={"text"} placeholder={"Status [Yes / En Route / No]"} value={this.state.status}
                                    onChange={(event) => this.setState({status: event.target.value})}/>
                             <div className={"messageErrorCoffee"}>{statusErrorMessage}</div>
-                            <input type={"text"} placeholder={"substatus"} value={this.state.substatus}
-                                   onChange={(event) => this.setState({substatus: event.target.value})}/>
                             <div className={"multipleButtonsCoffee"}>
                                 <button>Submit</button>
                                 <button onClick={this.logout}>Logout</button>

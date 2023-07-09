@@ -9,7 +9,6 @@ class CoffeeMain extends React.Component {
         super(props);
         this.state = {
             status: '',
-            substatus: '',
         };
     };
 
@@ -20,7 +19,7 @@ class CoffeeMain extends React.Component {
                 .then(function (response) {
                     data = response.data
                 })
-            this.setState({status: data.status, substatus: data.substatus})
+            this.setState({status: data.status})
         } catch(err) {
             console.log(err)
         }
@@ -30,7 +29,7 @@ class CoffeeMain extends React.Component {
         return (
             <div className={"mainCoffee"}>
                 <h1>Is Leo at Think Coffee?</h1>
-                <Container status={"enroute"}/>
+                <Container status={this.state.status}/>
             </div>
         )
     }

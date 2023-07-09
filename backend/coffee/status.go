@@ -7,10 +7,9 @@ import (
 	"net/http"
 )
 
-// Status tracks
+// Status tracks the status
 type Status struct {
-	Status    string `json:"status"`
-	Substatus string `json:"substatus"`
+	Status string `json:"status"`
 }
 
 // StatusUpdate allows the admin to change the displayed status on the web page
@@ -25,7 +24,7 @@ func StatusUpdate(w http.ResponseWriter, r *http.Request) {
 
 	regenerateSession(w, sessionToken)
 
-	// retrieve new status and substatus from query
+	// retrieve new status from query
 	var status Status
 	err = json.NewDecoder(r.Body).Decode(&status)
 	if err != nil {
@@ -34,8 +33,8 @@ func StatusUpdate(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// update status and substatus values in table
-	_, err = database.Postgres.Exec("UPDATE coffeeStatus SET status = $1, substatus = $2", status.Status, status.Substatus)
+	// update status values in table
+	_, err = database.Postgres.Exec("UPDATE coffeeStatus SET status = $1", status.Status)
 	if err != nil {
 		log.Printf("Error updating status in coffeeStatus table.\nERROR: %v", err)
 		w.WriteHeader(http.StatusInternalServerError)
@@ -48,24 +47,22 @@ func StatusUpdate(w http.ResponseWriter, r *http.Request) {
 
 // RetrieveStatus retrieves that current status as it is in the database to display on the web pag
 func RetrieveStatus(w http.ResponseWriter, _ *http.Request) {
-	var fullStatus Status
+	var statusJSON Status
 	var status string
-	var substatus string
 
 	// get status from database
 	row := database.Postgres.QueryRow("SELECT * FROM coffeeStatus")
-	err := row.Scan(&status, &substatus)
+	err := row.Scan(&status)
 	if err != nil {
 		log.Printf("Error retrieving status from coffeeStatus table.\nERROR: %v", err)
 		w.WriteHeader(http.StatusInternalServerError)
 		return
 	}
 
-	// return status and substatus as JSON object
-	fullStatus.Status = status
-	fullStatus.Substatus = substatus
+	// return status as JSON object
+	statusJSON.Status = status
 
-	returnStatus, err := json.Marshal(&fullStatus)
+	returnStatus, err := json.Marshal(&statusJSON)
 	if err != nil {
 		log.Printf("Error marshalling status to JSON.\nERROR: %v", err)
 		w.WriteHeader(http.StatusInternalServerError)
