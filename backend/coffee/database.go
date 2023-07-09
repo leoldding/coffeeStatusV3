@@ -22,7 +22,7 @@ func DatabaseInitialize() {
 		return
 	}
 
-	_, err = database.Postgres.Exec("CREATE TABLE IF NOT EXISTS coffeeStatus(status VARCHAR(40), substatus TEXT);")
+	_, err = database.Postgres.Exec("CREATE TABLE IF NOT EXISTS coffeeStatus(status VARCHAR(40));")
 	if err != nil {
 		log.Printf("Error creating coffeeStatus table in Postgres.\nERROR: %v", err)
 		return
@@ -53,7 +53,7 @@ func DatabaseInitialize() {
 		return
 	}
 	if count == 0 {
-		_, err = database.Postgres.Exec("INSERT INTO coffeeStatus(status, substatus) VALUES ($1, $2);", "Yes", "*Temp*")
+		_, err = database.Postgres.Exec("INSERT INTO coffeeStatus(status) VALUES ($1);", "no")
 		if err != nil {
 			log.Printf("Error inserting status into database.\nERROR: %v", err)
 			return
@@ -61,4 +61,13 @@ func DatabaseInitialize() {
 	}
 
 	return
+}
+
+// TableDeletion is a temporary function being used to remove the coffeeStatus table
+func TableDeletion() {
+	_, err := database.Postgres.Exec("DROP TABLE coffeeStatus;")
+	if err != nil {
+		log.Printf("Error dropping coffeeStatus table in Postgres.\nERROR: %v", err)
+		return
+	}
 }
