@@ -22,6 +22,8 @@ class CoffeeAdmin extends React.Component {
     }
 
     async componentDidMount() {
+        document.title = "Coffee Admin";
+
         try {
             await Axios.get("/backend/coffeeCheckSession");
             this.setState({"loggedIn": true,});

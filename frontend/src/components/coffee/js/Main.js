@@ -17,6 +17,11 @@ class CoffeeMain extends React.Component {
         var icon = document.getElementById("icon")
         icon.href = coffee_cup
 
+        var apple_icon = document.getElementById("apple_icon")
+        apple_icon.href = coffee_cup
+
+        document.title = "Coffee Status";
+
         try {
             var data
             await Axios.get("/backend/coffeeRetrieveStatus")
