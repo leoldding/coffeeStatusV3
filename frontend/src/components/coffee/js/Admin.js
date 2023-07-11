@@ -29,7 +29,7 @@ class CoffeeAdmin extends React.Component {
         var apple_icon = document.getElementById("apple_icon")
         apple_icon.href = coffee_cup
 
-        document.title = "Coffee Admin";
+        document.title = "Leo Ding - Coffee Admin";
 
         try {
             await Axios.get("/backend/coffeeCheckSession");

@@ -20,7 +20,7 @@ class CoffeeMain extends React.Component {
         var apple_icon = document.getElementById("apple_icon")
         apple_icon.href = coffee_cup
 
-        document.title = "Coffee Status";
+        document.title = "Leo Ding - Coffee Status";
 
         try {
             var data
