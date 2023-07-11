@@ -1,18 +1,16 @@
 #yesStatusCoffee {
     background-color: #77DD77;
+    color: #A8F6A8;
 }
 
 #enrouteStatusCoffee {
     background-color: #FFFAA0;
+    color: #FFE673;
 }
 
 #noStatusCoffee {
     background-color: #FF5757;
-}
-
-#logoutButtonCoffee {
-    display: block;
-    margin: 2rem auto;
+    color: #FFC0C0;
 }
 
 .adminCoffee button, .adminCoffee input {
@@ -70,19 +68,9 @@
 
 .statusChangeContainerCoffee {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     margin: 0 1rem;
     align-items: center;
-}
-
-.statusChangeContainerCoffee > button {
-    border: 2px #2C2C2C solid;
-    border-radius: 50%;
-    height: 6.5rem;
-    width: 6.5rem;
-    margin: 0.25rem auto;
-    font-size: 1.25rem;
-    color: #2C2C2C;
 }
 
 .statusUpdateMessage > div{
@@ -117,11 +105,5 @@
 
     .statusChangeContainerCoffee {
         margin: 0 5rem;
-    }
-
-    .statusChangeContainerCoffee > button {
-        height: 15rem;
-        width: 15rem;
-        font-size: 2rem;
     }
 }

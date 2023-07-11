@@ -147,16 +147,16 @@ class CoffeeAdmin extends React.Component {
             return (
                 <div className={"adminCoffee"}>
                     <h1>Admin Panel</h1>
-                    <div className={"statusChangeContainerCoffee"}>
-                        <button id={"yesStatusCoffee"} onClick={(event) => this.statusSubmit(event, 'yes')}>Yes</button>
-                        <button id={"enrouteStatusCoffee"} onClick={(event) => this.statusSubmit(event, 'enroute')}>En Route</button>
-                        <button id={"noStatusCoffee"} onClick={(event) => this.statusSubmit(event, 'no')}>No</button>
-                    </div>
                     <div className={"statusUpdateMessage"}>
                         <div className={"messageCoffee successCoffee"}>{statusUpdateSuccess}</div>
                         <div className={"messageCoffee errorCoffee"}>{statusUpdateError}</div>
                     </div>
-                    <button id={"logoutButtonCoffee"} onClick={this.logout}>Logout</button>
+                    <div className={"statusChangeContainerCoffee"}>
+                        <button id={"yesStatusCoffee"} onClick={(event) => this.statusSubmit(event, 'yes')}>Yes</button>
+                        <button id={"enrouteStatusCoffee"} onClick={(event) => this.statusSubmit(event, 'enroute')}>En Route</button>
+                        <button id={"noStatusCoffee"} onClick={(event) => this.statusSubmit(event, 'no')}>No</button>
+                        <button onClick={this.logout}>Logout</button>
+                    </div>
                 </div>
             )
         }
