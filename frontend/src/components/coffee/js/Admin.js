@@ -139,7 +139,7 @@ class CoffeeAdmin extends React.Component {
                                    onChange={(event) => this.setState({password: event.target.value})}/>
                             <div className={"messageCoffee errorCoffee"}>{passwordErrorMessage}</div>
                         </div>
-                        <button>Login</button>
+                        <button id={"loginCoffee"}>Login</button>
                     </form>
                 </div>
             )
@@ -155,7 +155,7 @@ class CoffeeAdmin extends React.Component {
                         <button id={"yesStatusCoffee"} onClick={(event) => this.statusSubmit(event, 'yes')}>Yes</button>
                         <button id={"enrouteStatusCoffee"} onClick={(event) => this.statusSubmit(event, 'enroute')}>En Route</button>
                         <button id={"noStatusCoffee"} onClick={(event) => this.statusSubmit(event, 'no')}>No</button>
-                        <button onClick={this.logout}>Logout</button>
+                        <button id={"logoutCoffee"} onClick={this.logout}>logout</button>
                     </div>
                 </div>
             )
