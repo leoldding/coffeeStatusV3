@@ -39,6 +39,7 @@ class CoffeeMain extends React.Component {
             <div className={"mainCoffee"}>
                 <h1>Is Leo at Think Coffee?</h1>
                 <Container status={this.state.status}/>
+                <button id={"infoCoffee"}>i</button>
             </div>
         )
     }
