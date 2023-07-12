@@ -14,8 +14,7 @@ class CoffeeAdmin extends React.Component {
             usernameError: "",
             passwordError: "",
             statusUpdate: "",
-            updateError: "",
-            updateSuccess: "",
+            updateMessage: "",
         }
 
         this.usernameFocus = React.createRef();
@@ -102,28 +101,35 @@ class CoffeeAdmin extends React.Component {
         event.preventDefault();
         event.currentTarget.blur();
 
+        var message = document.getElementById("statusMessageCoffee");
+
         try {
             await Axios.post("/backend/coffeeStatusUpdate", {
                 status: status,
             })
-            this.setState({updateSuccess: "Status Updated", updateError: "",});
+            this.setState({updateMessage: "Status Updated"});
+            message.classList.add("successCoffee");
+            message.classList.remove("errorCoffee");
         } catch(err) {
             if (err.response.status === 401) {
-                this.setState({loggedIn: false, updateError: "", updateSuccess: "",})
+                this.setState({loggedIn: false, updateMessage: ""})
+                message.classList.remove("successCoffee");
+                message.classList.remove("errorCoffee");
             } else {
                 console.log(err)
-                this.setState({updateSuccess: "", updateError: "Error with Status Update"});
+                this.setState({updateMessage: "Error with Status Update"});
+                message.classList.remove("successCoffee");
+                message.classList.add("errorCoffee");
             }
         }
 
-        setTimeout(() => this.setState({updateError: "", updateSuccess: "",}), 5000);
+        setTimeout(() => this.setState({updateMessage: "",}), 5000);
     }
 
     render() {
         let usernameErrorMessage = this.state.usernameError
         let passwordErrorMessage = this.state.passwordError
-        let statusUpdateError = this.state.updateError
-        let statusUpdateSuccess = this.state.updateSuccess
+        let statusUpdateMessage = this.state.updateMessage
         if (this.state.loggedIn === false) {
             return (
                 <div className={"adminCoffee"}>
@@ -147,10 +153,7 @@ class CoffeeAdmin extends React.Component {
             return (
                 <div className={"adminCoffee"}>
                     <h1>Admin Panel</h1>
-                    <div className={"statusUpdateMessage"}>
-                        <div className={"messageCoffee successCoffee"}>{statusUpdateSuccess}</div>
-                        <div className={"messageCoffee errorCoffee"}>{statusUpdateError}</div>
-                    </div>
+                    <div id={"statusMessageCoffee"} className={"messageCoffee"}>{statusUpdateMessage}</div>
                     <div className={"statusChangeContainerCoffee"}>
                         <button id={"yesStatusCoffee"} onClick={(event) => this.statusSubmit(event, 'yes')}>Yes</button>
                         <button id={"enrouteStatusCoffee"} onClick={(event) => this.statusSubmit(event, 'enroute')}>En Route</button>

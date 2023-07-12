@@ -45,6 +45,10 @@
     width: fit-content;
 }
 
+#statusMessageCoffee {
+    text-align: center;
+}
+
 .adminCoffee button, .adminCoffee input {
     margin: 0 auto;
     height: 2rem;
@@ -92,6 +96,7 @@
 .messageCoffee {
     font-size: 0.75rem;
     margin: 0.25rem auto 0;
+    height: 1rem;
 }
 
 .errorCoffee {
@@ -107,11 +112,6 @@
     flex-direction: column;
     margin: 0 1rem;
     align-items: center;
-}
-
-.statusUpdateMessage > div {
-    text-align: center;
-    margin: 0;
 }
 
 .textInput {
