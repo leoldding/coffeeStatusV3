@@ -62,3 +62,12 @@ func DatabaseInitialize() {
 
 	return
 }
+
+// TableDeletion is a temporary function being used to remove the coffeeStatus table
+func TableDeletion() {
+	_, err := database.Postgres.Exec("DROP TABLE coffeeStatus;")
+	if err != nil {
+		log.Printf("Error dropping coffeeStatus table in Postgres.\nERROR: %v", err)
+		return
+	}
+}

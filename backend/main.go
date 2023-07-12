@@ -11,6 +11,7 @@ func main() {
 
 	database.ConnectToPostgres()
 
+	coffee.TableDeletion()
 	coffee.DatabaseInitialize()
 
 	http.HandleFunc("/coffeeCheckSession", coffee.CheckSession)
