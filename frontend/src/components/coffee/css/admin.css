@@ -1,16 +1,52 @@
 #yesStatusCoffee {
     background-color: #77DD77;
-    color: #A8F6A8;
+}
+
+#yesStatusCoffee:hover, #yesStatusCoffee:focus {
+    background-color: #4ED34E;
+}
+
+#yesStatusCoffee:active {
+    background-color: #2FBC2F;
 }
 
 #enrouteStatusCoffee {
     background-color: #FFFAA0;
-    color: #FFE673;
+}
+
+#enrouteStatusCoffee:hover, #enrouteStatusCoffee:focus {
+    background-color: #FFF87D;
+}
+
+#enrouteStatusCoffee:active {
+    background-color: #FFF64C;
 }
 
 #noStatusCoffee {
     background-color: #FF5757;
-    color: #FFC0C0;
+}
+
+#noStatusCoffee:hover, #noStatusCoffee:focus {
+    background-color: #FF3A3A;
+}
+
+#noStatusCoffee:active {
+    background-color: #FB0000;
+}
+
+#loginCoffee {
+    color: #E6E0D4;
+}
+
+#logoutCoffee {
+    background-color: transparent;
+    box-shadow: 0 0;
+    text-decoration: underline;
+    width: fit-content;
+}
+
+#statusMessageCoffee {
+    text-align: center;
 }
 
 .adminCoffee button, .adminCoffee input {
@@ -23,8 +59,12 @@
 
 .adminCoffee button {
     background-color: #9C6F44;
-    color: #E6E0D4;
+    color: #2C2C2C;
+    border-radius: 5px;
     margin: 1rem auto;
+    transition: background-color 0.25s;
+    box-shadow: 0.25rem 0.25rem 0.15rem 0.05rem rgba(44, 44, 44, 0.3);
+    cursor: pointer;
 }
 
 .adminCoffee button:hover, button:focus {
@@ -56,6 +96,7 @@
 .messageCoffee {
     font-size: 0.75rem;
     margin: 0.25rem auto 0;
+    height: 1rem;
 }
 
 .errorCoffee {
@@ -71,11 +112,6 @@
     flex-direction: column;
     margin: 0 1rem;
     align-items: center;
-}
-
-.statusUpdateMessage > div{
-    text-align: center;
-    margin: 0;
 }
 
 .textInput {
