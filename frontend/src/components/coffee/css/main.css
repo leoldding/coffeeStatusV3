@@ -1,13 +1,13 @@
-#infoCoffee {
-    color: #2C2C2C;
+#infoButtonCoffee {
     background-color: transparent;
-    border: 3px #2C2C2C solid;
-    border-radius: 50%;
-    font-size: 1.5rem;
-    height: 2rem;
-    width: 2rem;
     display: block;
     margin: 0 1rem 0 auto;
+    border: 0;
+}
+
+#infoCoffee {
+    height: 2rem;
+    width: 2rem;
 }
 
 .mainCoffee h1 {

@@ -2,6 +2,7 @@ import React from 'react';
 import Axios from 'axios';
 import Container from './Container.js';
 import coffee_cup from './../../../assets/coffee_cup.png'
+import info_icon from './../../../assets/info_icon.png'
 import './../../styles.css';
 import './../css/main.css';
 
@@ -39,7 +40,9 @@ class CoffeeMain extends React.Component {
             <div className={"mainCoffee"}>
                 <h1>Is Leo at Think Coffee?</h1>
                 <Container status={this.state.status}/>
-                <button id={"infoCoffee"}>i</button>
+                <button id={"infoButtonCoffee"}>
+                    <img id={"infoCoffee"} src={info_icon} alt={"Information Icon"} />
+                </button>
             </div>
         )
     }
