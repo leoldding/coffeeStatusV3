@@ -52,14 +52,6 @@ func Login(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// remove old sessions related to the user
-	_, err = database.Postgres.Exec("DELETE FROM coffeeSessions WHERE username = $1", user.Username)
-	if err != nil {
-		log.Printf("Error deleting previous sessions from coffeeSessions table.\nERROR: %v", err)
-		w.WriteHeader(http.StatusInternalServerError)
-		return
-	}
-
 	createNewSession(w, user.Username)
 
 	w.WriteHeader(http.StatusOK)

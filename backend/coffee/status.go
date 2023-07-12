@@ -33,6 +33,17 @@ func StatusUpdate(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	validStatus := make(map[string]struct{})
+	validStatus["yes"] = struct{}{}
+	validStatus["enroute"] = struct{}{}
+	validStatus["no"] = struct{}{}
+
+	if _, exists := validStatus[status.Status]; !exists {
+		log.Printf("ERROR: Submitted status '%v' is invalid", status.Status)
+		w.WriteHeader(http.StatusBadRequest)
+		return
+	}
+
 	// update status values in table
 	_, err = database.Postgres.Exec("UPDATE coffeeStatus SET status = $1", status.Status)
 	if err != nil {

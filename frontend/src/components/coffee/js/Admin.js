@@ -2,6 +2,7 @@ import React from 'react';
 import Axios from 'axios';
 import './../../styles.css';
 import './../css/admin.css';
+import coffee_cup from "../../../assets/coffee_cup.png";
 
 class CoffeeAdmin extends React.Component {
     constructor(props) {
@@ -12,9 +13,9 @@ class CoffeeAdmin extends React.Component {
             password: "",
             usernameError: "",
             passwordError: "",
-            status: "",
-            statusError: "",
-            successMessage: "",
+            statusUpdate: "",
+            updateError: "",
+            updateSuccess: "",
         }
 
         this.usernameFocus = React.createRef();
@@ -22,6 +23,14 @@ class CoffeeAdmin extends React.Component {
     }
 
     async componentDidMount() {
+        var icon = document.getElementById("icon")
+        icon.href = coffee_cup
+
+        var apple_icon = document.getElementById("apple_icon")
+        apple_icon.href = coffee_cup
+
+        document.title = "Leo Ding - Coffee Admin";
+
         try {
             await Axios.get("/backend/coffeeCheckSession");
             this.setState({"loggedIn": true,});
@@ -36,13 +45,25 @@ class CoffeeAdmin extends React.Component {
     credentialSubmit = async (event) => {
         event.preventDefault();
 
-        if (this.state.username === "") {
-            this.setState({usernameError: "Username can't be empty!", passwordError: "",});
-            this.usernameFocus.current.focus();
-        } else if (this.state.password === "") {
-            this.setState({usernameError: "", passwordError: "Password can't be empty!",});
+        var empty = false;
+
+        if (this.state.password === "") {
+            this.setState({passwordError: "Required"});
             this.passwordFocus.current.focus();
+            empty = true;
         } else {
+            this.setState({passwordError: ""});
+        }
+
+        if (this.state.username === "") {
+            this.setState({usernameError: "Required"});
+            this.usernameFocus.current.focus();
+            empty = true;
+        } else {
+            this.setState({usernameError: ""});
+        }
+
+        if (!empty) {
             try {
                 await Axios.post("/backend/coffeeLogin", {
                     username: this.state.username.trim(),
@@ -52,10 +73,10 @@ class CoffeeAdmin extends React.Component {
 
             } catch (err) {
                 if (err.response.status === 400) {
-                    this.setState({usernameError: "User does not exist!", passwordError: "",});
+                    this.setState({usernameError: "Invalid User", passwordError: "",});
                     this.usernameFocus.current.focus();
                 } else if (err.response.status === 401) {
-                    this.setState({usernameError: "", passwordError: "Incorrect password!"});
+                    this.setState({usernameError: "", passwordError: "Invalid Password"});
                     this.passwordFocus.current.focus();
                 } else {
                     console.log(err)
@@ -77,71 +98,64 @@ class CoffeeAdmin extends React.Component {
         this.setState({loggedIn: false})
     }
 
-    statusSubmit = async (event) => {
+    statusSubmit = async (event, status) => {
         event.preventDefault();
+        event.currentTarget.blur();
 
-        var validStatuses = ["Yes", "En Route", "No"]
-
-        if (this.state.status === "") {
-            this.setState({statusError: "Status can't be empty!", successMessage: "",})
-        } else if (validStatuses.findIndex(status => {return status === this.state.status}) === -1) {
-            this.setState({statusError: "Not a valid status!", successMessage: "",})
-        } else {
-            this.setState({status: "", statusError: "",})
-            try {
-                await Axios.post("/backend/coffeeStatusUpdate", {
-                    status: this.state.status,
-                })
-                this.setState({successMessage: "Successfully sent status!"})
-            } catch(err) {
-                if (err.response.status === 401) {
-                    this.setState({loggedIn: false, status: "", statusError: "", successMessage: "",})
-                } else {
-                    console.log(err)
-                }
+        try {
+            await Axios.post("/backend/coffeeStatusUpdate", {
+                status: status,
+            })
+            this.setState({updateSuccess: "Status Updated", updateError: "",});
+        } catch(err) {
+            if (err.response.status === 401) {
+                this.setState({loggedIn: false, updateError: "", updateSuccess: "",})
+            } else {
+                console.log(err)
+                this.setState({updateSuccess: "", updateError: "Error with Status Update"});
             }
         }
+
+        setTimeout(() => this.setState({updateError: "", updateSuccess: "",}), 5000);
     }
 
     render() {
         let usernameErrorMessage = this.state.usernameError
         let passwordErrorMessage = this.state.passwordError
-        let statusErrorMessage = this.state.statusError
-        let statusSuccessMessage = this.state.successMessage
+        let statusUpdateError = this.state.updateError
+        let statusUpdateSuccess = this.state.updateSuccess
         if (this.state.loggedIn === false) {
             return (
                 <div className={"adminCoffee"}>
                     <h1>Admin Login</h1>
-                    <div className={"formContainerCoffee"}>
-                        <form onSubmit={this.credentialSubmit}>
-                            <h2>Login Here</h2>
+                    <form onSubmit={this.credentialSubmit}>
+                        <div className={"textInput"}>
                             <input type={"text"} placeholder={"Username"} value={this.state.username} ref={this.usernameFocus}
                                    onChange={(event) => this.setState({username: event.target.value})}/>
-                            <div className={"messageErrorCoffee"}>{usernameErrorMessage}</div>
+                            <div className={"messageCoffee errorCoffee"}>{usernameErrorMessage}</div>
+                        </div>
+                        <div className={"textInput"}>
                             <input type={"password"} placeholder={"Password"} value={this.state.password} ref={this.passwordFocus}
                                    onChange={(event) => this.setState({password: event.target.value})}/>
-                            <div className={"messageErrorCoffee"}>{passwordErrorMessage}</div>
-                            <button>Login</button>
-                        </form>
-                    </div>
+                            <div className={"messageCoffee errorCoffee"}>{passwordErrorMessage}</div>
+                        </div>
+                        <button>Login</button>
+                    </form>
                 </div>
             )
         } else {
             return (
                 <div className={"adminCoffee"}>
                     <h1>Admin Panel</h1>
-                    <div className={"formContainerCoffee"}>
-                        <form onSubmit={this.statusSubmit}>
-                            <h2>Submit Information</h2>
-                            <div className={"messageSuccessCoffee"}>{statusSuccessMessage}</div>
-                            <input type={"text"} placeholder={"Status [Yes / En Route / No]"} value={this.state.status}
-                                   onChange={(event) => this.setState({status: event.target.value})}/>
-                            <div className={"messageErrorCoffee"}>{statusErrorMessage}</div>
-                            <div className={"multipleButtonsCoffee"}>
-                                <button>Submit</button>
-                                <button onClick={this.logout}>Logout</button>
-                            </div>
-                        </form>
+                    <div className={"statusUpdateMessage"}>
+                        <div className={"messageCoffee successCoffee"}>{statusUpdateSuccess}</div>
+                        <div className={"messageCoffee errorCoffee"}>{statusUpdateError}</div>
+                    </div>
+                    <div className={"statusChangeContainerCoffee"}>
+                        <button id={"yesStatusCoffee"} onClick={(event) => this.statusSubmit(event, 'yes')}>Yes</button>
+                        <button id={"enrouteStatusCoffee"} onClick={(event) => this.statusSubmit(event, 'enroute')}>En Route</button>
+                        <button id={"noStatusCoffee"} onClick={(event) => this.statusSubmit(event, 'no')}>No</button>
+                        <button onClick={this.logout}>Logout</button>
                     </div>
                 </div>
             )

@@ -1,82 +1,109 @@
+#yesStatusCoffee {
+    background-color: #77DD77;
+    color: #A8F6A8;
+}
+
+#enrouteStatusCoffee {
+    background-color: #FFFAA0;
+    color: #FFE673;
+}
+
+#noStatusCoffee {
+    background-color: #FF5757;
+    color: #FFC0C0;
+}
+
 .adminCoffee button, .adminCoffee input {
-    margin: 12px auto;
-    height: 30px;
-    width: 200px;
+    margin: 0 auto;
+    height: 2rem;
+    width: 12rem;
+    border: 0;
+    box-sizing: border-box;
+}
+
+.adminCoffee button {
+    background-color: #9C6F44;
+    color: #E6E0D4;
+    margin: 1rem auto;
+}
+
+.adminCoffee button:hover, button:focus {
+    background-color: #6F4827;
+}
+
+.adminCoffee button:active {
+    background-color: #563517;
+}
+
+.adminCoffee input {
+    background-color: #E6E0D4;
+    border-bottom: 1px #2C2C2C solid;
 }
 
 .adminCoffee form {
     display: flex;
     flex-direction: column;
-    margin: 0 auto;
+    margin: 2rem auto;
     align-items: center;
 }
 
 .adminCoffee h1 {
-    font-size: 2.3rem;
-    margin: 30px 0;
+    font-size: 2rem;
+    margin: 4rem 1rem 2rem;
     text-align: center;
 }
 
-.formContainerCoffee {
-    display: flex;
-    margin: 140px auto;
-    flex-direction: column;
-    align-items: center;
+.messageCoffee {
+    font-size: 0.75rem;
+    margin: 0.25rem auto 0;
 }
 
-.messageErrorCoffee {
+.errorCoffee {
     color: #FF5757;
 }
 
-.messageSuccessCoffee {
+.successCoffee {
     color: #77DD77;
 }
 
-.multipleButtonsCoffee {
-    display: inline
+.statusChangeContainerCoffee {
+    display: flex;
+    flex-direction: column;
+    margin: 0 1rem;
+    align-items: center;
 }
 
-.multipleButtonsCoffee > button {
-    cursor: pointer;
-    width: 100px;
-    margin: 12px 5px;
+.statusUpdateMessage > div{
+    text-align: center;
+    margin: 0;
+}
+
+.textInput {
+    margin: 1rem auto;
 }
 
 @media (min-width: 769px) {
     .adminCoffee button, .adminCoffee input {
-        margin: 25px auto;
-        height: 60px;
-        width: 360px;
-        border-radius: 10px;
+        height: 4rem;
+        width: 24rem;
         font-size: 1.5rem;
+    }
+
+    .adminCoffee button {
+        margin: 2rem auto;
     }
 
     .adminCoffee h1 {
-        font-size: 6rem;
+        font-size: 5rem;
+        margin: 4rem 1rem;
     }
 
-    .adminCoffee h2 {
-        font-size: 3rem;
+    .messageCoffee {
+        font-size: 1.125rem;
+        margin: 0.5rem auto 0;
     }
 
-    .adminCoffee input {
-        padding: 0 15px;
-    }
-
-    .formContainerCoffee {
-        background-color: #404040;
-        margin: 7% auto;
-        width: 600px;
-        padding-bottom: 2vh;
-        border-radius: 25px;
-    }
-
-    .messageErrorCoffee, .messageSuccessCoffee {
-        font-size: 1.5rem;
-    }
-
-    .multipleButtonsCoffee > button {
-        width: 200px;
-        margin: 24px 10px;
+    .statusChangeContainerCoffee {
+        margin: 0 5rem;
     }
 }
