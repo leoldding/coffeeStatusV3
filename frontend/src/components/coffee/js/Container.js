@@ -1,15 +1,15 @@
-import React from 'react';
-import './../../styles.css';
-import './../css/container.css';
-import coffee_cup from './../../../assets/coffee_cup.png'
+import React from "react";
+import "./../../styles.css";
+import "./../css/container.css";
+import coffee_cup from "./../../../assets/coffee_cup.png"
 
 class Container extends React.Component {
     constructor(props) {
         super(props);
         this.colors = {
-            'yes': 'backgroundGreenCoffee',
-            'enroute': 'backgroundYellowCoffee',
-            'no': 'backgroundRedCoffee',
+            "yes": "backgroundGreenCoffee",
+            "enroute": "backgroundYellowCoffee",
+            "no": "backgroundRedCoffee",
         }
     }
 

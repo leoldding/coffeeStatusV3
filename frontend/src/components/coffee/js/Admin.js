@@ -1,7 +1,7 @@
-import React from 'react';
-import Axios from 'axios';
-import './../../styles.css';
-import './../css/admin.css';
+import React from "react";
+import Axios from "axios";
+import "./../../styles.css";
+import "./../css/admin.css";
 import coffee_cup from "../../../assets/coffee_cup.png";
 
 class CoffeeAdmin extends React.Component {
@@ -22,10 +22,10 @@ class CoffeeAdmin extends React.Component {
     }
 
     async componentDidMount() {
-        var icon = document.getElementById("icon")
+        let icon = document.getElementById("icon")
         icon.href = coffee_cup
 
-        var apple_icon = document.getElementById("apple_icon")
+        let apple_icon = document.getElementById("apple_icon")
         apple_icon.href = coffee_cup
 
         document.title = "Leo Ding - Coffee Admin";
@@ -44,7 +44,7 @@ class CoffeeAdmin extends React.Component {
     credentialSubmit = async (event) => {
         event.preventDefault();
 
-        var empty = false;
+        let empty = false;
 
         if (this.state.password === "") {
             this.setState({passwordError: "Required"});
@@ -101,7 +101,7 @@ class CoffeeAdmin extends React.Component {
         event.preventDefault();
         event.currentTarget.blur();
 
-        var message = document.getElementById("statusMessageCoffee");
+        let message = document.getElementById("statusMessageCoffee");
 
         try {
             await Axios.post("/backend/coffeeStatusUpdate", {
@@ -155,9 +155,9 @@ class CoffeeAdmin extends React.Component {
                     <h1>Admin Panel</h1>
                     <div id={"statusMessageCoffee"} className={"messageCoffee"}>{statusUpdateMessage}</div>
                     <div className={"statusChangeContainerCoffee"}>
-                        <button id={"yesStatusCoffee"} onClick={(event) => this.statusSubmit(event, 'yes')}>Yes</button>
-                        <button id={"enrouteStatusCoffee"} onClick={(event) => this.statusSubmit(event, 'enroute')}>En Route</button>
-                        <button id={"noStatusCoffee"} onClick={(event) => this.statusSubmit(event, 'no')}>No</button>
+                        <button id={"yesStatusCoffee"} onClick={(event) => this.statusSubmit(event, "yes")}>Yes</button>
+                        <button id={"enrouteStatusCoffee"} onClick={(event) => this.statusSubmit(event, "enroute")}>En Route</button>
+                        <button id={"noStatusCoffee"} onClick={(event) => this.statusSubmit(event, "no")}>No</button>
                         <button id={"logoutCoffee"} onClick={this.logout}>logout</button>
                     </div>
                 </div>

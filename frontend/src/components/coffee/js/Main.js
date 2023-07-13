@@ -1,30 +1,32 @@
-import React from 'react';
-import Axios from 'axios';
-import Container from './Container.js';
-import coffee_cup from './../../../assets/coffee_cup.png'
-import info_icon from './../../../assets/info_icon.png'
-import './../../styles.css';
-import './../css/main.css';
+import React from "react";
+import Axios from "axios";
+import Container from "./Container.js";
+import coffee_cup from "./../../../assets/coffee_cup.png"
+import info_icon from "./../../../assets/info_icon.png"
+import "./../../styles.css";
+import "./../css/main.css";
 
 class CoffeeMain extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            status: '',
+            status: "",
         };
     };
 
+    ws = new WebSocket("wss://" + window.location.host + "/coffeeWS");
+
     async componentDidMount() {
-        var icon = document.getElementById("icon")
+        let icon = document.getElementById("icon")
         icon.href = coffee_cup
 
-        var apple_icon = document.getElementById("apple_icon")
+        let apple_icon = document.getElementById("apple_icon")
         apple_icon.href = coffee_cup
 
         document.title = "Leo Ding - Coffee Status";
 
         try {
-            var data
+            let data
             await Axios.get("/backend/coffeeRetrieveStatus")
                 .then(function (response) {
                     data = response.data
@@ -33,12 +35,25 @@ class CoffeeMain extends React.Component {
         } catch(err) {
             console.log(err)
         }
+
+        this.ws.onmessage = event => {
+            this.setState({status: event.data})
+        }
+
+        this.ws.onclose = event => {
+            console.log("WS connection has been closed.")
+        }
+
+        this.ws.onerror = event => {
+            console.log("Error has occurred. WS connection has been closed.")
+        }
+
     };
 
     displayInfo = async (event) => {
         event.preventDefault();
 
-        var info = document.getElementById("infoCardCoffee");
+        let info = document.getElementById("infoCardCoffee");
 
         if (info.classList.contains("hideCoffee")) {
             info.classList.remove("hideCoffee");

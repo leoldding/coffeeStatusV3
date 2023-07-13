@@ -52,6 +52,8 @@ func StatusUpdate(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	Pub.broadcast <- statusText{[]byte(status.Status)}
+
 	w.WriteHeader(http.StatusOK)
 	return
 }
