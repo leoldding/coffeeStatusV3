@@ -29,11 +29,11 @@
     width: 2rem;
 }
 
-.card {
+.cardCoffee {
     opacity: 100%
 }
 
-.hide {
+.hideCoffee {
     opacity: 0%;
 }
 

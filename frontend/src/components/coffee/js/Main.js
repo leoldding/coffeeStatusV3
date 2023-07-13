@@ -40,10 +40,10 @@ class CoffeeMain extends React.Component {
 
         var info = document.getElementById("infoCardCoffee");
 
-        if (info.classList.contains("hide")) {
-            info.classList.remove("hide");
+        if (info.classList.contains("hideCoffee")) {
+            info.classList.remove("hideCoffee");
         } else {
-            info.classList.add("hide");
+            info.classList.add("hideCoffee");
         }
     }
 
@@ -56,7 +56,7 @@ class CoffeeMain extends React.Component {
                     <button id={"infoButtonCoffee"} onClick={this.displayInfo}>
                         <img id={"infoIconCoffee"} src={info_icon} alt={"Information Icon"} />
                     </button>
-                    <div id={"infoCardCoffee"} className={"card hide"}>
+                    <div id={"infoCardCoffee"} className={"cardCoffee hideCoffee"}>
                         <div>Green = "Yes"</div>
                         <div>Yellow = "En Route"</div>
                         <div>Red = "No"</div>
