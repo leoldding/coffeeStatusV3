@@ -1,13 +1,40 @@
 #infoButtonCoffee {
     background-color: transparent;
     display: block;
-    margin: 0 1rem 0 auto;
+    margin: 0 0 0 auto;
     border: 0;
 }
 
-#infoCoffee {
+#infoCardCoffee {
+    position: absolute;
+    background-color: #D7C5B4;
+    border: 2px #2C2C2C solid;
+    border-radius: 0.25rem;
+    box-shadow: 0.25rem 0.25rem 0.15rem 0.05rem rgba(44, 44, 44, 0.3);
+    padding: 0.5rem;
+    top: 2rem;
+    right: 2rem;
+    width: fit-content;
+    transition: opacity 0.25s;
+}
+
+#infoContainerCoffee {
+    height: 5rem;
+    margin: 0 0 0 auto;
+    position: relative;
+}
+
+#infoIconCoffee {
     height: 2rem;
     width: 2rem;
+}
+
+.card {
+    opacity: 100%
+}
+
+.hide {
+    opacity: 0%;
 }
 
 .mainCoffee h1 {
@@ -17,6 +44,10 @@
 }
 
 @media (min-width: 769px) {
+    #infoCardCoffee {
+        font-size: 1.5rem;
+    }
+
     .mainCoffee h1 {
         font-size: 5rem;
     }

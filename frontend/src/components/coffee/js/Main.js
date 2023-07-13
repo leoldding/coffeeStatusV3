@@ -35,14 +35,33 @@ class CoffeeMain extends React.Component {
         }
     };
 
+    displayInfo = async (event) => {
+        event.preventDefault();
+
+        var info = document.getElementById("infoCardCoffee");
+
+        if (info.classList.contains("hide")) {
+            info.classList.remove("hide");
+        } else {
+            info.classList.add("hide");
+        }
+    }
+
     render() {
         return (
             <div className={"mainCoffee"}>
                 <h1>Is Leo at Think Coffee?</h1>
                 <Container status={this.state.status}/>
-                <button id={"infoButtonCoffee"}>
-                    <img id={"infoCoffee"} src={info_icon} alt={"Information Icon"} />
-                </button>
+                <div id={"infoContainerCoffee"}>
+                    <button id={"infoButtonCoffee"} onClick={this.displayInfo}>
+                        <img id={"infoIconCoffee"} src={info_icon} alt={"Information Icon"} />
+                    </button>
+                    <div id={"infoCardCoffee"} className={"card hide"}>
+                        <div>Green = "Yes"</div>
+                        <div>Yellow = "En Route"</div>
+                        <div>Red = "No"</div>
+                    </div>
+                </div>
             </div>
         )
     }
