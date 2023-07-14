@@ -12,14 +12,14 @@ var upgrader = websocket.Upgrader{
 }
 
 func StatusWS(w http.ResponseWriter, r *http.Request) {
-	log.Println("ATTEMPTING TO CONNECT TO: " + r.URL.String())
+	log.Println("StatusWS: Attempting to connect to " + r.URL.String())
 
 	upgrader.CheckOrigin = func(r *http.Request) bool { return true }
 	ws, err := upgrader.Upgrade(w, r, nil)
 	if err != nil {
-		log.Printf("Error upgrading connection to WebSocket: %v", err)
+		log.Printf("Error upgrading connection to WebSocket.\nERROR: %v", err)
 	}
-	log.Printf("Successful connection to WebSocket.")
+	log.Printf("StatusWS: Successful connection to " + r.URL.String())
 
 	conn := &connection{ws: ws, sendStatus: make(chan []byte, 256)}
 	sub := subscriber{conn: conn}
@@ -38,6 +38,7 @@ func (sub subscriber) readStatus() {
 	for {
 		_, status, err := c.ws.ReadMessage()
 		if err != nil {
+			log.Printf(string(status))
 			log.Printf("Subscriber message reading error.\nERROR: %v", err)
 			break
 		}

@@ -13,15 +13,15 @@ var upgrader = websocket.Upgrader{
 }
 
 func PingWS(w http.ResponseWriter, r *http.Request) {
-	log.Print("ATTEMPTING TO CONNECT TO: " + r.URL.String())
+	log.Print("PingWS: Attempting to connect to " + r.URL.String())
 
 	upgrader.CheckOrigin = func(r *http.Request) bool { return true }
 	ws, err := upgrader.Upgrade(w, r, nil)
 	if err != nil {
-		log.Printf("Error upgrading connection to WebSocket: %f", err)
+		log.Printf("PingWS: Error upgrading connection to WebSocket.\nERROR: %v", err)
 	}
 
-	log.Print("SUCCESSFUL CONNECTION TO: " + r.URL.String())
+	log.Print("PingWS: Successful connection to " + r.URL.String())
 
 	ticker := time.NewTicker(30 * time.Second)
 
