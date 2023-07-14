@@ -99,14 +99,6 @@
     height: 1rem;
 }
 
-.errorCoffee {
-    color: #FF5757;
-}
-
-.successCoffee {
-    color: #77DD77;
-}
-
 .statusChangeContainerCoffee {
     display: flex;
     flex-direction: column;

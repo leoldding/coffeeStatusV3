@@ -101,25 +101,17 @@ class CoffeeAdmin extends React.Component {
         event.preventDefault();
         event.currentTarget.blur();
 
-        let message = document.getElementById("statusMessageCoffee");
-
         try {
             await Axios.post("/backend/coffeeStatusUpdate", {
                 status: status,
             })
             this.setState({updateMessage: "Status Updated"});
-            message.classList.add("successCoffee");
-            message.classList.remove("errorCoffee");
         } catch(err) {
             if (err.response.status === 401) {
                 this.setState({loggedIn: false, updateMessage: ""})
-                message.classList.remove("successCoffee");
-                message.classList.remove("errorCoffee");
             } else {
                 console.log(err)
                 this.setState({updateMessage: "Error with Status Update"});
-                message.classList.remove("successCoffee");
-                message.classList.add("errorCoffee");
             }
         }
 
