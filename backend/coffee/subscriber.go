@@ -18,7 +18,7 @@ func StatusWS(w http.ResponseWriter, r *http.Request) {
 	upgrader.CheckOrigin = func(r *http.Request) bool { return true }
 	ws, err := upgrader.Upgrade(w, r, nil)
 	if err != nil {
-		log.Printf("Error upgrading connection to WebSocket.\nERROR: %v", err)
+		log.Printf("StatusWS: Error upgrading connection to WebSocket.\nERROR: %v", err)
 	}
 	log.Printf("StatusWS: Successful connection to " + r.URL.String())
 

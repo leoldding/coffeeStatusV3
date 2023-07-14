@@ -37,8 +37,6 @@ class CoffeeMain extends React.Component {
         }
 
         this.ws.onmessage = event => {
-            console.log("Received websocket message.")
-            console.log(event)
             this.setState({status: event.data})
         }
 

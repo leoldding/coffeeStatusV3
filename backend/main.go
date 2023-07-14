@@ -3,13 +3,11 @@ package main
 import (
 	"github.com/leoldding/coffeeStatusV3/coffee"
 	"github.com/leoldding/coffeeStatusV3/database"
-	"github.com/leoldding/coffeeStatusV3/websocket"
 	"net/http"
 )
 
 func main() {
 	http.HandleFunc("/ping", ping)
-	http.HandleFunc("/ws", websocket.PingWS)
 
 	database.ConnectToPostgres()
 
