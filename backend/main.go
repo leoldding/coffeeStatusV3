@@ -20,7 +20,7 @@ func main() {
 	http.HandleFunc("/coffeeLogout", coffee.Logout)
 	http.HandleFunc("/coffeeStatusUpdate", coffee.StatusUpdate)
 	http.HandleFunc("/coffeeRetrieveStatus", coffee.RetrieveStatus)
-	http.HandleFunc("/coffeeWS", coffee.StatusWS)
+	http.HandleFunc("/ws/coffeeWS", coffee.StatusWS)
 
 	go coffee.Pub.Publish()
 
