@@ -18,6 +18,9 @@ func main() {
 	http.HandleFunc("/coffeeLogout", coffee.Logout)
 	http.HandleFunc("/coffeeStatusUpdate", coffee.StatusUpdate)
 	http.HandleFunc("/coffeeRetrieveStatus", coffee.RetrieveStatus)
+	http.HandleFunc("/ws/coffeeWS", coffee.StatusWS)
+
+	go coffee.Pub.Publish()
 
 	http.ListenAndServe(":8080", nil)
 	return
