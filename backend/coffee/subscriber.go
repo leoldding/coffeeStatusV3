@@ -12,6 +12,8 @@ var upgrader = websocket.Upgrader{
 }
 
 func StatusWS(w http.ResponseWriter, r *http.Request) {
+	log.Println("ATTEMPTING TO CONNECT TO: " + r.URL.String())
+
 	upgrader.CheckOrigin = func(r *http.Request) bool { return true }
 	ws, err := upgrader.Upgrade(w, r, nil)
 	if err != nil {

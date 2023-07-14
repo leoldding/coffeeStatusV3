@@ -73,8 +73,8 @@ func regenerateSession(w http.ResponseWriter, sessionToken *http.Cookie) {
 	row := database.Postgres.QueryRow("SELECT username FROM coffeeSessions WHERE sessionname = $1", sessionToken.Value)
 	err := row.Scan(&username)
 	if err != nil {
-		log.Printf("Error retrieving username from coffeeSessions table.\nERRROR: %v", err)
-		w.WriteHeader(http.StatusInternalServerError)
+		log.Printf("Error retrieving username from coffeeSessions table.\nERROR: %v", err)
+		w.WriteHeader(http.StatusUnauthorized)
 		return
 	}
 

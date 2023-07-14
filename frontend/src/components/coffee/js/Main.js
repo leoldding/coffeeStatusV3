@@ -14,7 +14,7 @@ class CoffeeMain extends React.Component {
         };
     };
 
-    ws = new WebSocket("wss://" + window.location.host + "/coffeeWS");
+    ws = new WebSocket("wss://" + window.location.host + "/ws/coffeeWS");
 
     async componentDidMount() {
         let icon = document.getElementById("icon")
