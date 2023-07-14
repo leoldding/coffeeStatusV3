@@ -4,6 +4,7 @@ import (
 	"github.com/gorilla/websocket"
 	"log"
 	"net/http"
+	"time"
 )
 
 var upgrader = websocket.Upgrader{
@@ -24,10 +25,10 @@ func StatusWS(w http.ResponseWriter, r *http.Request) {
 	conn := &connection{ws: ws, sendStatus: make(chan []byte, 256)}
 	sub := subscriber{conn: conn}
 	Pub.register <- sub
-	go sub.readStatus()
+	go sub.writeStatus()
 }
 
-func (sub subscriber) readStatus() {
+func (sub subscriber) writeStatus() {
 	c := sub.conn
 
 	defer func() {
@@ -35,14 +36,22 @@ func (sub subscriber) readStatus() {
 		c.ws.Close()
 	}()
 
+	ticker := time.NewTicker(30 * time.Second)
+
 	for {
-		_, status, err := c.ws.ReadMessage()
-		if err != nil {
-			log.Printf(string(status))
-			log.Printf("Subscriber message reading error.\nERROR: %v", err)
-			break
+		select {
+		case status, ok := <-c.sendStatus:
+			if !ok {
+				c.ws.WriteMessage(websocket.CloseMessage, []byte{})
+				return
+			}
+			if err := c.ws.WriteMessage(websocket.TextMessage, status); err != nil {
+				return
+			}
+		case <-ticker.C:
+			if err := c.ws.WriteMessage(websocket.PingMessage, []byte{}); err != nil {
+				return
+			}
 		}
-		s := statusText{status}
-		Pub.broadcast <- s
 	}
 }
