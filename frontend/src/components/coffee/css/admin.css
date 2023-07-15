@@ -99,6 +99,10 @@
     height: 1rem;
 }
 
+.errorCoffee {
+    color: #FF5757;
+}
+
 .statusChangeContainerCoffee {
     display: flex;
     flex-direction: column;
