@@ -22,13 +22,15 @@ class CoffeeAdmin extends React.Component {
     }
 
     async componentDidMount() {
-        let icon = document.getElementById("icon")
-        icon.href = coffee_cup
+        window.onload = () => {
+            let icon = document.getElementById("icon")
+            icon.href = coffee_cup
 
-        let apple_icon = document.getElementById("apple_icon")
-        apple_icon.href = coffee_cup
+            let apple_icon = document.getElementById("apple_icon")
+            apple_icon.href = coffee_cup
 
-        document.title = "Leo Ding - Coffee Admin";
+            document.title = "Leo Ding - Coffee Admin";
+        }
 
         try {
             await Axios.get("/backend/coffeeCheckSession");
