@@ -4,8 +4,6 @@ import axios from "axios";
 import {render, fireEvent, screen, waitFor} from "@testing-library/react";
 import Main from "./../js/Main.js";
 
-
-
 jest.mock("axios")
 
 describe("Main component elements", () => {
