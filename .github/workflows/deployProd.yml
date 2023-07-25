@@ -1,4 +1,4 @@
-name: Deploy Development Version
+name: Deploy Production Version
 on:
   push:
     branches:
