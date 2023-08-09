@@ -32,12 +32,8 @@ class CoffeeMain extends React.Component {
         }
 
         try {
-            let data
-            await Axios.get("/backend/coffeeRetrieveStatus")
-                .then(function (response) {
-                    data = response.data
-                })
-            this.setState({status: data.status})
+            const data = await this.getCoffeeStatus();
+            this.setState({status: data.status});
         } catch(err) {
             console.log(err)
         }
@@ -46,15 +42,25 @@ class CoffeeMain extends React.Component {
             this.setState({status: event.data})
         }
 
-        this.ws.onclose = event => {
+        this.ws.onclose = _ => {
             console.log("WS connection has been closed.")
         }
 
-        this.ws.onerror = event => {
+        this.ws.onerror = _ => {
             console.log("Error has occurred. WS connection has been closed.")
         }
 
     };
+
+    async getCoffeeStatus() {
+        try {
+            const response = await Axios.get("/backend/coffeeRetrieveStatus");
+            return response.data;
+        } catch(err) {
+            console.log(err);
+            return { status: "no"}; // default value
+        }
+    }
 
     displayInfo = async (event) => {
         event.preventDefault();

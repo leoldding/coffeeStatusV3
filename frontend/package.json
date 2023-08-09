@@ -18,7 +18,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --watchAll --coverage",
     "test_deploy": "CI=true react-scripts test --coverage",
-    "eject": "react-qscripts eject"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
