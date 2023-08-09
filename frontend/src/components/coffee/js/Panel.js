@@ -9,6 +9,7 @@ class CoffeePanel extends React.Component {
         super(props)
         this.state = {
             updateMessage: "",
+            updateCounter: 0,
         }
     }
 
@@ -55,12 +56,20 @@ class CoffeePanel extends React.Component {
                 this.setState({updateMessage: "Error with Status Update"});
             }
         }
-
-        setTimeout(() => this.setState({updateMessage: "",}), 5000);
+        this.setState({updateCounter: this.state.updateCounter + 1})
+        setTimeout(() => {
+                this.setState({updateCounter: this.state.updateCounter - 1})
+            }, 5000);
     }
 
     render() {
-        let statusUpdateMessage = this.state.updateMessage
+        const counter = this.state.updateCounter
+        let statusUpdateMessage
+        if (counter > 0) {
+            statusUpdateMessage = this.state.updateMessage;
+        } else {
+            statusUpdateMessage = "";
+        }
         return (
             <div className={"adminCoffee"}>
                 <h1>Admin Panel</h1>
