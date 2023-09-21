@@ -3,9 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate} from "react-router-do
 import CoffeeMain from './components/coffee/js/Main.js'
 import CoffeeAdmin from './components/coffee/js/Admin.js'
 
-class App extends React.Component {
-
-  render() {
+function App() {
     return (
         <>
           <Router>
@@ -20,7 +18,6 @@ class App extends React.Component {
           </Router>
         </>
     )
-  }
 }
 
 
