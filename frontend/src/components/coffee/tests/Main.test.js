@@ -1,69 +1,98 @@
 import "@testing-library/jest-dom";
 import React from "react";
-import axios from "axios";
-import {render, fireEvent, screen, waitFor} from "@testing-library/react";
+import { render, fireEvent, waitFor } from "@testing-library/react";
 import Main from "./../js/Main.js";
+import * as api from "./../js/api";
 
-jest.mock("axios")
+jest.mock("./../js/api");
 
-describe("Main component elements", () => {
+
+describe("Main", () => {
     beforeEach(() => {
-        render(<Main/>)
+        jest.clearAllMocks();
+    })
+
+    it("renders correctly", async () => {
+       api.retrieveStatus.mockResolvedValue("")
+
+       const { getByText, getByTestId } = render(
+           <Main />
+       );
+
+       const imageElement = getByTestId("coffeeImage");
+       await waitFor(() => expect(imageElement.closest("div")).toHaveClass("backgroundRedCoffee"))
+       expect(imageElement).toHaveAttribute("src", "coffee_cup.png");
+
+       const headerElement = getByText("Is Leo at Think Coffee?");
+       expect(headerElement).toBeInTheDocument();
     });
 
-    test("should render without crashing", async () => {});
+    it("info card responds to button", async () => {
+        api.retrieveStatus.mockResolvedValue("")
 
-    test("should render header", () => {
-        const headerElement = screen.getByText("Is Leo at Think Coffee?");
-        expect(headerElement).toBeInTheDocument();
-    });
+        const { getByRole, getByTestId } = render(
+            <Main />
+        );
 
-    test("should render status", async () => {
-        const statusElement = document.getElementsByClassName("iconContainerCoffee")[0];
-        expect(statusElement).toBeInTheDocument();
-    });
+        const imageElement = getByTestId("coffeeImage");
+        await waitFor(() => expect(imageElement.closest("div")).toHaveClass("backgroundRedCoffee"));
 
-    test("should render info card", async () => {
-        const cardElement = document.getElementById("infoContainerCoffee");
-        expect(cardElement).toBeInTheDocument();
-    });
-});
-
-describe("Main component info card", () => {
-    beforeEach(() => {
-        render(<Main/>);
-    });
-
-    test("should start hidden", () => {
-       const cardElement = document.getElementById("infoCardCoffee");
-       expect(cardElement).toHaveClass("hideCoffee");
-    });
-
-    test("should become visible when button clicked", () => {
-       const buttonElement = document.getElementById("infoButtonCoffee");
-       fireEvent.click(buttonElement);
-
-       const cardElement = document.getElementById("infoCardCoffee");
-       expect(cardElement).not.toHaveClass("hideCoffee");
-    });
-
-    test("should become hidden if visible when button clicked", () => {
-        const buttonElement = document.getElementById("infoButtonCoffee");
+        const buttonElement = getByRole("button");
+        const cardElement = getByTestId("infoCard");
+        expect(cardElement).toHaveClass("hideCoffee");
         fireEvent.click(buttonElement);
+        expect(cardElement).not.toHaveClass("hideCoffee");
         fireEvent.click(buttonElement);
-
-        const cardElement = document.getElementById("infoCardCoffee");
         expect(cardElement).toHaveClass("hideCoffee");
     });
 });
 
-describe("Main component axios", () => {
-    test("should retrieve status", async () => {
-        axios.get.mockImplementation(() => Promise.resolve({data: "yes"}))
+describe("Main Container Background",() => {
+    beforeEach(() => {
+       jest.clearAllMocks();
+    });
 
-        axios.get("/backend/coffeeRetrieveStatus")
-            .then((response) => {
-                expect(response.data).toEqual("yes");
-            })
+    it("renders red on api error",async () => {
+        api.retrieveStatus.mockRejectedValue("Mocking Retrieve Status API Error");
+
+        const { getByTestId } = render(
+            <Main />
+        );
+
+        const imageElement = getByTestId("coffeeImage");
+        await waitFor(() => expect(imageElement.closest("div")).toHaveClass("backgroundRedCoffee"));
+    });
+
+    it("renders red on 'no' status", async () => {
+        api.retrieveStatus.mockResolvedValue("no")
+
+        const { getByTestId } = render(
+            <Main />
+        );
+
+        const imageElement = getByTestId("coffeeImage");
+        await waitFor(() => expect(imageElement.closest("div")).toHaveClass("backgroundRedCoffee"));
+    });
+
+    it("renders yellow on 'enroute' status", async () => {
+        api.retrieveStatus.mockResolvedValue("enroute")
+
+        const { getByTestId } = render(
+            <Main />
+        );
+
+        const imageElement = getByTestId("coffeeImage");
+        await waitFor(() => expect(imageElement.closest("div")).toHaveClass("backgroundYellowCoffee"));
+    });
+
+    it("renders red on 'yes' status", async () => {
+        api.retrieveStatus.mockResolvedValue("yes")
+
+        const { getByTestId } = render(
+            <Main />
+        );
+
+        const imageElement = getByTestId("coffeeImage");
+        await waitFor(() => expect(imageElement.closest("div")).toHaveClass("backgroundGreenCoffee"));
     });
 });

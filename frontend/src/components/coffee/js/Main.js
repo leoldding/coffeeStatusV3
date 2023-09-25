@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import Axios from "axios";
 import coffee_cup from "./../../../assets/coffee_cup.png"
 import info_icon from "./../../../assets/info_icon.png"
 import "./../../styles.css";
 import "./../css/main.css";
+import { retrieveStatus } from "./api";
 
 function CoffeeMain() {
     const [status, setStatus] = useState("no");
@@ -14,6 +14,11 @@ function CoffeeMain() {
         "enroute": "backgroundYellowCoffee",
         "no": "backgroundRedCoffee",
     };
+
+    // set document title
+    useEffect(() => {
+        document.title = "Leo Ding - Coffee Status";
+    }, []);
 
     // websocket channel
     useEffect(() => {
@@ -34,20 +39,11 @@ function CoffeeMain() {
 
     // get current status on load
     useEffect(() => {
-        Axios.get("/backend/coffeeRetrieveStatus")
-            .then((res) => setStatus(res.data.status))
-            .catch(err => console.log(err))
-    }, []);
-
-    // set index elements
-    useEffect(() => {
-        let icon = document.getElementById("icon")
-        icon.href = coffee_cup
-
-        let apple_icon = document.getElementById("apple_icon")
-        apple_icon.href = coffee_cup
-
-        document.title = "Leo Ding - Coffee Status";
+        retrieveStatus()
+            .then((data) => {
+                setStatus(data)
+            })
+            .catch((err) => console.log(err))
     }, []);
 
     // hide/show info card
@@ -63,20 +59,20 @@ function CoffeeMain() {
         <div className={"mainCoffee"}>
             <h1>Is Leo at Think Coffee?</h1>
             <div className={`iconContainerCoffee ${colors[status]}`}>
-                <img className={"iconCoffee"} src={coffee_cup} alt={"Coffee Cup Icon"}/>
+                <img data-testid={"coffeeImage"} className={"iconCoffee"} src={coffee_cup} alt={"Coffee Cup Icon"}/>
             </div>
             <div id={"infoContainerCoffee"}>
                 <button id={"infoButtonCoffee"} onClick={displayInfo}>
                     <img id={"infoIconCoffee"} src={info_icon} alt={"Information Icon"} />
                 </button>
-                <div id={"infoCardCoffee"} className={`cardCoffee ${hidden}`}>
+                <div data-testid={"infoCard"} id={"infoCardCoffee"} className={`cardCoffee ${hidden}`}>
                     <div>Green = "Yes"</div>
                     <div>Yellow = "En Route"</div>
                     <div>Red = "No"</div>
                 </div>
             </div>
         </div>
-    );
+    )
 }
 
 export default CoffeeMain;
