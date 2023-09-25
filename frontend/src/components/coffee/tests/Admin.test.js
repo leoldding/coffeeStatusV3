@@ -1,12 +1,33 @@
 import "@testing-library/jest-dom";
 import React from "react";
-import { render, fireEvent, screen } from "@testing-library/react";
+import {render, waitFor} from "@testing-library/react";
 import Admin from "./../js/Admin.js";
+import * as api from "./../js/api";
 
-describe("Admin component elements", () => {
+jest.mock("./../js/api");
+
+describe("Admin", () => {
     beforeEach(() => {
-        render(<Admin/>);
+        jest.clearAllMocks();
+    })
+
+    it("renders login when session doesn't exist", async () => {
+        api.checkSession.mockRejectedValue("Mocking No Active Admin Session");
+
+        const { getByText } = render(
+            <Admin />
+        )
+
+        await waitFor(() => expect(getByText("Admin Login")).toBeInTheDocument());
     });
 
-    test("should render without crashing", () => {});
+    it("renders panel when session does exist", async () => {
+        api.checkSession.mockResolvedValue("Mocking Active Admin Session");
+
+        const { getByText } = render(
+           <Admin />
+        )
+
+        await waitFor(() => expect(getByText("Admin Panel")).toBeInTheDocument());
+    });
 });
