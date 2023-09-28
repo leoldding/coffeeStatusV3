@@ -16,6 +16,7 @@ jobs:
         working-directory: ./frontend
         run: |
           npm ci
+          npx tailwindcss -i ./src/tailwind.css -o ./src/styles.css
           npm run build --if-present
           npm run test_deploy
   Build_and_Test_Backend:
@@ -35,7 +36,7 @@ jobs:
     needs: [ Build_and_Test_Frontend, Build_and_Test_Backend ]
     runs-on: ubuntu-latest
     steps:
-      -   uses: actions/checkout@v2
+      -   uses: actions/checkout@v3
       -   name: Docker Login
           run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
 
