@@ -20,7 +20,7 @@ describe("Main", () => {
        );
 
        const imageElement = getByTestId("coffeeImage");
-       await waitFor(() => expect(imageElement.closest("div")).toHaveClass("backgroundRedCoffee"))
+       await waitFor(() => expect(imageElement.closest("div")).toHaveClass("bg-coffeeRed-1"))
        expect(imageElement).toHaveAttribute("src", "coffee_cup.png");
 
        const headerElement = getByText("Is Leo at Think Coffee?");
@@ -35,15 +35,15 @@ describe("Main", () => {
         );
 
         const imageElement = getByTestId("coffeeImage");
-        await waitFor(() => expect(imageElement.closest("div")).toHaveClass("backgroundRedCoffee"));
+        await waitFor(() => expect(imageElement.closest("div")).toHaveClass("bg-coffeeRed-1"));
 
         const buttonElement = getByRole("button");
         const cardElement = getByTestId("infoCard");
-        expect(cardElement).toHaveClass("hideCoffee");
+        expect(cardElement).toHaveClass("opacity-0");
         fireEvent.click(buttonElement);
-        expect(cardElement).not.toHaveClass("hideCoffee");
+        expect(cardElement).toHaveClass("opacity-100");
         fireEvent.click(buttonElement);
-        expect(cardElement).toHaveClass("hideCoffee");
+        expect(cardElement).toHaveClass("opacity-0");
     });
 });
 
@@ -60,7 +60,7 @@ describe("Main Container Background",() => {
         );
 
         const imageElement = getByTestId("coffeeImage");
-        await waitFor(() => expect(imageElement.closest("div")).toHaveClass("backgroundRedCoffee"));
+        await waitFor(() => expect(imageElement.closest("div")).toHaveClass("bg-coffeeRed-1"));
     });
 
     it("renders red on 'no' status", async () => {
@@ -71,7 +71,7 @@ describe("Main Container Background",() => {
         );
 
         const imageElement = getByTestId("coffeeImage");
-        await waitFor(() => expect(imageElement.closest("div")).toHaveClass("backgroundRedCoffee"));
+        await waitFor(() => expect(imageElement.closest("div")).toHaveClass("bg-coffeeRed-1"));
     });
 
     it("renders yellow on 'enroute' status", async () => {
@@ -82,7 +82,7 @@ describe("Main Container Background",() => {
         );
 
         const imageElement = getByTestId("coffeeImage");
-        await waitFor(() => expect(imageElement.closest("div")).toHaveClass("backgroundYellowCoffee"));
+        await waitFor(() => expect(imageElement.closest("div")).toHaveClass("bg-coffeeYellow-1"));
     });
 
     it("renders red on 'yes' status", async () => {
@@ -93,6 +93,6 @@ describe("Main Container Background",() => {
         );
 
         const imageElement = getByTestId("coffeeImage");
-        await waitFor(() => expect(imageElement.closest("div")).toHaveClass("backgroundGreenCoffee"));
+        await waitFor(() => expect(imageElement.closest("div")).toHaveClass("bg-coffeeGreen-1"));
     });
 });
