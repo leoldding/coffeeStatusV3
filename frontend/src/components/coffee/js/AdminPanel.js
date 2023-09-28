@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "./../../styles.css";
 import "./../css/admin.css";
 import { logout, statusUpdate } from "./api";
 

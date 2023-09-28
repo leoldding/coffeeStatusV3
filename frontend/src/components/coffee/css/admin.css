@@ -71,9 +71,9 @@
     background-color: #6F4827;
 }
 
-.adminCoffee button:active {
-    background-color: #563517;
-}
+/*.adminCoffee button:active {*/
+/*    background-color: #563517;*/
+/*}*/
 
 .adminCoffee input {
     background-color: #E6E0D4;

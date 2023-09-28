@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./../../styles.css";
 import "./../css/admin.css";
 import { login } from "./api";
 

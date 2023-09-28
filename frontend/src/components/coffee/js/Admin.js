@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "./../../styles.css";
 import "./../css/admin.css";
 import AdminLogin from "./AdminLogin.js";
 import AdminPanel from "./AdminPanel.js";
