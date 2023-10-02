@@ -8,14 +8,14 @@ jest.mock("./../js/api");
 
 describe("Admin Panel", () => {
     it("renders correctly", () => {
-        const { getByText } = render(
+        const { getByText, getByTestId } = render(
             <AdminPanel />
         )
 
         const headerElement = getByText("Admin Panel");
         expect(headerElement).toBeInTheDocument();
 
-        const updateElement = document.getElementById("statusMessageCoffee");
+        const updateElement = getByTestId("statusMessage");
         expect(updateElement).toHaveTextContent("");
 
         let buttonElement = getByText("Yes");

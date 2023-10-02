@@ -18,6 +18,12 @@ module.exports = {
                     1: "#FF5757",
                     2: "#FF3A3A",
                     3: "#FB0000"
+                },
+                "coffeeBlack": {
+                    1: "#2C2C2C",
+                },
+                "coffeeWhite": {
+                    1: "#E6E0D4",
                 }
             },
             "screens": {

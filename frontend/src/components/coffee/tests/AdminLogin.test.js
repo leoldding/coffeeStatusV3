@@ -8,7 +8,7 @@ jest.mock("./../js/api");
 
 describe("Admin Login", () => {
     it("renders correctly", () => {
-        const { getByText, getByTestId } = render(
+        const { getByText, getByTestId, getAllByRole } = render(
             <AdminLogin />
         )
 
@@ -18,7 +18,7 @@ describe("Admin Login", () => {
         const formElement = getByTestId("loginForm");
         expect(formElement).toBeInTheDocument();
 
-        const inputElements = document.getElementsByClassName("textInput");
+        const inputElements = getAllByRole("textbox");
         expect(inputElements.length).toEqual(2);
 
         const buttonElement = screen.getByText("Login");
