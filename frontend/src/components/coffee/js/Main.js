@@ -4,7 +4,7 @@ import info_icon from "./../../../assets/info_icon.png"
 import { retrieveStatus } from "./api";
 
 function CoffeeMain() {
-    const [status, setStatus] = useState("");
+    const [status, setStatus] = useState("blank");
     const [hidden, setHidden] = useState("opacity-0");
     const [loading, setLoading] = useState(false);
 
@@ -12,6 +12,7 @@ function CoffeeMain() {
         "yes": "bg-coffeeGreen-1",
         "enroute": "bg-coffeeYellow-1",
         "no": "bg-coffeeRed-1",
+        "blank": "bg-transparent",
     };
 
     // set document title
