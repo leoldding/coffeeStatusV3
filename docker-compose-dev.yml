@@ -35,7 +35,6 @@ services:
       - ./frontend:/app
     environment:
       - WDS_SOCKET_PORT=0
-      - WATCHPACK_POLLING=true
     depends_on:
       backend:
         condition: service_healthy

@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate} from "react-router-do
 import CoffeeMain from './components/coffee/js/Main.js'
 import CoffeeAdmin from './components/coffee/js/Admin.js'
 import coffee_cup from "./assets/coffee_cup.png";
+import "./styles.css";
 
 function App() {
     // set index elements
@@ -15,7 +16,7 @@ function App() {
     }, []);
 
     return (
-        <>
+        <div className={"coffeeContainer h-screen"}>
           <Router>
             <Routes>
               <Route path={"/"} element={<CoffeeMain />}></Route>
@@ -26,7 +27,7 @@ function App() {
               />
             </Routes>
           </Router>
-        </>
+        </div>
     )
 }
 
