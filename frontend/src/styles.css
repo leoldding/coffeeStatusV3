@@ -703,6 +703,30 @@ body {
   width: fit-content;
 }
 
+@-webkit-keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  -webkit-animation: spin 1s linear infinite;
+          animation: spin 1s linear infinite;
+}
+
+.animate-none {
+  -webkit-animation: none;
+          animation: none;
+}
+
 .flex-col {
   flex-direction: column;
 }
@@ -752,6 +776,19 @@ body {
 .border-coffeeBlack-1 {
   --tw-border-opacity: 1;
   border-color: rgb(44 44 44 / var(--tw-border-opacity));
+}
+
+.border-transparent {
+  border-color: transparent;
+}
+
+.border-t-transparent {
+  border-top-color: transparent;
+}
+
+.border-t-coffeeBlack-1 {
+  --tw-border-opacity: 1;
+  border-top-color: rgb(44 44 44 / var(--tw-border-opacity));
 }
 
 .bg-\[\#9C6F44\] {

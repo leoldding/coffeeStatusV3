@@ -4,8 +4,9 @@ import info_icon from "./../../../assets/info_icon.png"
 import { retrieveStatus } from "./api";
 
 function CoffeeMain() {
-    const [status, setStatus] = useState("no");
+    const [status, setStatus] = useState("");
     const [hidden, setHidden] = useState("opacity-0");
+    const [loading, setLoading] = useState(false);
 
     const colors = {
         "yes": "bg-coffeeGreen-1",
@@ -37,9 +38,11 @@ function CoffeeMain() {
 
     // get current status on load
     useEffect(() => {
+        setLoading(true);
         retrieveStatus()
             .then((data) => {
                 setStatus(data)
+                setLoading(false);
             })
             .catch((err) => console.log(err))
     }, []);
@@ -56,7 +59,8 @@ function CoffeeMain() {
     return (
         <div className={"h-full"}>
             <h1 className={"text-4xl md:text-8xl pt-16 px-4 text-center font-medium"}>Is Leo at Think Coffee?</h1>
-            <div className={`h-56 w-56 md:h-96 md:w-96 border-4 border-coffeeBlack-1 border-solid rounded-full mx-auto mt-24 mb-4 flex flex-column justify-center items-center ${colors[status]}`}>
+            <div className={`h-56 w-56 md:h-96 md:w-96 rounded-full mx-auto mt-24 mb-4 flex flex-column justify-center items-center ${colors[status]}`}>
+                <div className={"absolute h-56 w-56 md:h-96 md:w-96 border-4 border-solid border-t-coffeeBlack-1 rounded-full " + (loading ? "border-transparent animate-spin" : "border-coffeeBlack-1 animate-none")}></div>
                 <img data-testid={"coffeeImage"} className={"h-40 w-40 md:h-64 md:w-64 mt-[1.5rem] mr-[1.5rem] mb-[2.5rem] ml-[2.25rem] md:mt-[2.25rem] md:mr-[2.625rem] md:mb-[3.75rem] md:ml-[3.375rem]"} src={coffee_cup} alt={"Coffee Cup Icon"}/>
             </div>
             <div className={"relative"}>
