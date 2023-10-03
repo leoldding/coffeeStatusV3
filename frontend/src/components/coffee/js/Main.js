@@ -57,7 +57,7 @@ function CoffeeMain() {
         <div className={"h-full"}>
             <h1 className={"text-4xl md:text-8xl pt-16 px-4 text-center font-medium"}>Is Leo at Think Coffee?</h1>
             <div className={`h-56 w-56 md:h-96 md:w-96 border-4 border-coffeeBlack-1 border-solid rounded-full mx-auto mt-24 mb-4 flex flex-column justify-center items-center ${colors[status]}`}>
-                <img data-testid={"coffeeImage"} className={"h-40 w-40 md:h-64 md:w-64 mt-[1.5rem] mr-[1.75rem] mb-[2.5rem] ml-[2.25rem] md:mt-[2.25rem] md:mr-[2.625rem] md:mb-[3.75rem] md:ml-[3.375rem]"} src={coffee_cup} alt={"Coffee Cup Icon"}/>
+                <img data-testid={"coffeeImage"} className={"h-40 w-40 md:h-64 md:w-64 mt-[1.5rem] mr-[1.5rem] mb-[2.5rem] ml-[2.25rem] md:mt-[2.25rem] md:mr-[2.625rem] md:mb-[3.75rem] md:ml-[3.375rem]"} src={coffee_cup} alt={"Coffee Cup Icon"}/>
             </div>
             <div className={"relative"}>
                 <button className={"absolute right-4"} onClick={displayInfo}>

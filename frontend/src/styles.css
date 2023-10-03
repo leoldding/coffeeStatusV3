@@ -625,8 +625,8 @@ body {
   margin-left: 2.25rem;
 }
 
-.mr-\[1\.75rem\] {
-  margin-right: 1.75rem;
+.mr-\[1\.5rem\] {
+  margin-right: 1.5rem;
 }
 
 .mt-24 {
@@ -635,6 +635,14 @@ body {
 
 .mt-\[1\.5rem\] {
   margin-top: 1.5rem;
+}
+
+.mr-\[1\.25rem\] {
+  margin-right: 1.25rem;
+}
+
+.mr-\[1\.75rem\] {
+  margin-right: 1.75rem;
 }
 
 .flex {
@@ -673,10 +681,6 @@ body {
   height: 100vh;
 }
 
-.h-16 {
-  height: 4rem;
-}
-
 .w-40 {
   width: 10rem;
 }
@@ -699,10 +703,6 @@ body {
   width: fit-content;
 }
 
-.shrink-0 {
-  flex-shrink: 0;
-}
-
 .flex-col {
   flex-direction: column;
 }
@@ -719,18 +719,6 @@ body {
   --tw-space-y-reverse: 0;
   margin-top: calc(2rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(2rem * var(--tw-space-y-reverse));
-}
-
-.space-y-16 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-y-reverse: 0;
-  margin-top: calc(4rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(4rem * var(--tw-space-y-reverse));
-}
-
-.space-y-4 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-y-reverse: 0;
-  margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(1rem * var(--tw-space-y-reverse));
 }
 
 .rounded {
@@ -820,6 +808,11 @@ body {
 .text-4xl {
   font-size: 2.25rem;
   line-height: 2.5rem;
+}
+
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
 }
 
 .text-xs {
@@ -958,14 +951,14 @@ body {
     background-color: rgb(78 211 78 / var(--tw-bg-opacity));
   }
 
-  .md\:hover\:bg-coffeeYellow-2:hover {
-    --tw-bg-opacity: 1;
-    background-color: rgb(255 248 125 / var(--tw-bg-opacity));
-  }
-
   .md\:hover\:bg-coffeeRed-2:hover {
     --tw-bg-opacity: 1;
     background-color: rgb(255 58 58 / var(--tw-bg-opacity));
+  }
+
+  .md\:hover\:bg-coffeeYellow-2:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgb(255 248 125 / var(--tw-bg-opacity));
   }
 
   .md\:focus\:bg-\[\#6F4827\]:focus {
@@ -978,14 +971,14 @@ body {
     background-color: rgb(78 211 78 / var(--tw-bg-opacity));
   }
 
-  .md\:focus\:bg-coffeeYellow-2:focus {
-    --tw-bg-opacity: 1;
-    background-color: rgb(255 248 125 / var(--tw-bg-opacity));
-  }
-
   .md\:focus\:bg-coffeeRed-2:focus {
     --tw-bg-opacity: 1;
     background-color: rgb(255 58 58 / var(--tw-bg-opacity));
+  }
+
+  .md\:focus\:bg-coffeeYellow-2:focus {
+    --tw-bg-opacity: 1;
+    background-color: rgb(255 248 125 / var(--tw-bg-opacity));
   }
 
   .md\:active\:bg-\[\#563517\]:active {
@@ -998,13 +991,13 @@ body {
     background-color: rgb(47 188 47 / var(--tw-bg-opacity));
   }
 
-  .md\:active\:bg-coffeeYellow-3:active {
-    --tw-bg-opacity: 1;
-    background-color: rgb(255 246 76 / var(--tw-bg-opacity));
-  }
-
   .md\:active\:bg-coffeeRed-3:active {
     --tw-bg-opacity: 1;
     background-color: rgb(251 0 0 / var(--tw-bg-opacity));
+  }
+
+  .md\:active\:bg-coffeeYellow-3:active {
+    --tw-bg-opacity: 1;
+    background-color: rgb(255 246 76 / var(--tw-bg-opacity));
   }
 }
