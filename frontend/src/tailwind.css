@@ -8,10 +8,3 @@
         @apply text-orange-950;
     }
 }
-
-@layer components {
-    .coffeeContainer {
-        background-color: #E6E0D4;
-        color: #2C2C2C;
-    }
-}

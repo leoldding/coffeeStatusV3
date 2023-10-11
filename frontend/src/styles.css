@@ -578,11 +578,6 @@ body {
   --tw-backdrop-sepia:  ;
 }
 
-.coffeeContainer {
-  background-color: #E6E0D4;
-  color: #2C2C2C;
-}
-
 .absolute {
   position: absolute;
 }
@@ -601,6 +596,10 @@ body {
 
 .top-8 {
   top: 2rem;
+}
+
+.m-auto {
+  margin: auto;
 }
 
 .mx-auto {
@@ -637,12 +636,8 @@ body {
   margin-top: 1.5rem;
 }
 
-.mr-\[1\.25rem\] {
-  margin-right: 1.25rem;
-}
-
-.mr-\[1\.75rem\] {
-  margin-right: 1.75rem;
+.mt-8 {
+  margin-top: 2rem;
 }
 
 .flex {
@@ -673,12 +668,20 @@ body {
   height: calc(100% - 250px);
 }
 
+.h-screen {
+  height: 100vh;
+}
+
 .h-full {
   height: 100%;
 }
 
-.h-screen {
-  height: 100vh;
+.h-\[calc\(100\%\)\] {
+  height: calc(100%);
+}
+
+.min-h-full {
+  min-height: 100%;
 }
 
 .w-40 {
@@ -703,6 +706,11 @@ body {
   width: fit-content;
 }
 
+.animate-none {
+  -webkit-animation: none;
+          animation: none;
+}
+
 @-webkit-keyframes spin {
   to {
     -webkit-transform: rotate(360deg);
@@ -720,11 +728,6 @@ body {
 .animate-spin {
   -webkit-animation: spin 1s linear infinite;
           animation: spin 1s linear infinite;
-}
-
-.animate-none {
-  -webkit-animation: none;
-          animation: none;
 }
 
 .flex-col {
@@ -780,10 +783,6 @@ body {
 
 .border-transparent {
   border-color: transparent;
-}
-
-.border-t-transparent {
-  border-top-color: transparent;
 }
 
 .border-t-coffeeBlack-1 {
@@ -861,6 +860,11 @@ body {
   font-weight: 500;
 }
 
+.text-coffeeBlack-1 {
+  --tw-text-opacity: 1;
+  color: rgb(44 44 44 / var(--tw-text-opacity));
+}
+
 .text-coffeeRed-1 {
   --tw-text-opacity: 1;
   color: rgb(255 87 87 / var(--tw-text-opacity));
@@ -935,6 +939,10 @@ body {
 
   .md\:mt-\[2\.25rem\] {
     margin-top: 2.25rem;
+  }
+
+  .md\:mt-16 {
+    margin-top: 4rem;
   }
 
   .md\:h-16 {

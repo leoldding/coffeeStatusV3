@@ -13,10 +13,12 @@ function App() {
 
         let apple_icon = document.getElementById("apple_icon")
         apple_icon.href = coffee_cup
+
+        document.body.className = "bg-coffeeWhite-1 text-coffeeBlack-1";
     }, []);
 
     return (
-        <div className={"coffeeContainer h-screen"}>
+        <div className={"h-screen"}>
           <Router>
             <Routes>
               <Route path={"/"} element={<CoffeeMain />}></Route>
