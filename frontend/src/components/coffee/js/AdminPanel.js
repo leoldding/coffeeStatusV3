@@ -44,9 +44,9 @@ function AdminPanel(props) {
     }, [updateCounter])
 
     return (
-        <div className={"h-full"}>
+        <div className={"min-h-full"}>
             <h1 className={"text-4xl md:text-8xl pt-16 px-4 text-center font-medium"}>Admin Panel</h1>
-            <div className={"h-[calc(100%-250px)] flex flex-col mx-auto justify-center items-center space-y-8 md:space-y-16"}>
+            <div className={"h-full flex flex-col mx-auto justify-center items-center space-y-8 md:space-y-16"}>
                 <div data-testid={"statusMessage"} className={"text-center text-xs md:text-lg my-1 md:my-2 mx-auto h-4"}>{updateMessage}</div>
                 <button className={"text-sm md:text-2xl mx-auto h-8 md:h-16 w-48 md:w-96 rounded shadow-[0.25rem_0.25rem_0.15rem_0.05rem_rgba(44,44,44,0.3)] transition duration-300 bg-coffeeGreen-1 md:hover:bg-coffeeGreen-2 md:focus:bg-coffeeGreen-2 md:active:bg-coffeeGreen-3"} onClick={(event) => statusSubmit(event, "yes")}>Yes</button>
                 <button className={"text-sm md:text-2xl mx-auto h-8 md:h-16 w-48 md:w-96 rounded shadow-[0.25rem_0.25rem_0.15rem_0.05rem_rgba(44,44,44,0.3)] transition duration-300 bg-coffeeYellow-1 md:hover:bg-coffeeYellow-2 md:focus:bg-coffeeYellow-2 md:active:bg-coffeeYellow-3"} onClick={(event) => statusSubmit(event, "enroute")}>En Route</button>

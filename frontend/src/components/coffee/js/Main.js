@@ -58,7 +58,7 @@ function CoffeeMain() {
     };
 
     return (
-        <div className={"h-full"}>
+        <div className={"min-h-full"}>
             <h1 className={"text-4xl md:text-8xl pt-16 px-4 text-center font-medium"}>Is Leo at Think Coffee?</h1>
             <div className={`h-56 w-56 md:h-96 md:w-96 rounded-full mx-auto mt-24 mb-4 flex flex-column justify-center items-center ${colors[status]}`}>
                 <div className={"absolute h-56 w-56 md:h-96 md:w-96 border-4 border-solid border-t-coffeeBlack-1 rounded-full " + (loading ? "border-transparent animate-spin" : "border-coffeeBlack-1 animate-none")}></div>
