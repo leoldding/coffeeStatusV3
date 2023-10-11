@@ -598,10 +598,6 @@ body {
   top: 2rem;
 }
 
-.m-auto {
-  margin: auto;
-}
-
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -632,12 +628,12 @@ body {
   margin-top: 6rem;
 }
 
-.mt-\[1\.5rem\] {
-  margin-top: 1.5rem;
-}
-
 .mt-8 {
   margin-top: 2rem;
+}
+
+.mt-\[1\.5rem\] {
+  margin-top: 1.5rem;
 }
 
 .flex {
@@ -664,20 +660,12 @@ body {
   height: 2rem;
 }
 
-.h-\[calc\(100\%-250px\)\] {
-  height: calc(100% - 250px);
-}
-
-.h-screen {
-  height: 100vh;
-}
-
 .h-full {
   height: 100%;
 }
 
-.h-\[calc\(100\%\)\] {
-  height: calc(100%);
+.h-screen {
+  height: 100vh;
 }
 
 .min-h-full {
@@ -937,12 +925,12 @@ body {
     margin-right: 2.625rem;
   }
 
-  .md\:mt-\[2\.25rem\] {
-    margin-top: 2.25rem;
-  }
-
   .md\:mt-16 {
     margin-top: 4rem;
+  }
+
+  .md\:mt-\[2\.25rem\] {
+    margin-top: 2.25rem;
   }
 
   .md\:h-16 {
