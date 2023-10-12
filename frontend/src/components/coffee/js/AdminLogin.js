@@ -50,7 +50,7 @@ function AdminLogin(props) {
 
     return (
         <div className={"min-h-full"}>
-            <h1 className={"text-4xl md:text-8xl pt-16 px-4 text-center font-medium"}>Admin Login</h1>
+            <h1 className={"text-4xl md:text-8xl pt-16 pb-12 px-4 text-center font-medium"}>Admin Login</h1>
             <form onSubmit={credentialSubmit} data-testid={"loginForm"} className={"h-full flex flex-col mx-auto justify-center items-center space-y-8 md:space-y-16 mt-8 md:mt-16"}>
                 <div className={"mx-auto"}>
                     <input type={"text"} className={"bg-coffeeWhite-1 h-8 md:h-16 w-48 md:w-96 md:text-2xl border-solid border-0 border-b-[1px] border-coffeeBlack-1"}
