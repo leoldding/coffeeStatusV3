@@ -1,6 +1,7 @@
 import "@testing-library/jest-dom";
 import React from "react";
 import { render, fireEvent, waitFor } from "@testing-library/react";
+import { BrowserRouter as Router } from "react-router-dom";
 import Main from "./../js/Main.js";
 import * as api from "./../js/api";
 
@@ -16,7 +17,9 @@ describe("Main", () => {
        api.retrieveStatus.mockResolvedValue("")
 
        const { getByText, getByTestId } = render(
-           <Main />
+           <Router>
+               <Main />
+           </Router>
        );
 
        const imageElement = getByTestId("coffeeImage");
@@ -31,7 +34,9 @@ describe("Main", () => {
         api.retrieveStatus.mockResolvedValue("")
 
         const { getByRole, getByTestId } = render(
-            <Main />
+            <Router>
+               <Main />
+            </Router>
         );
 
         const imageElement = getByTestId("coffeeImage");
@@ -56,7 +61,9 @@ describe("Main Container Background",() => {
         api.retrieveStatus.mockRejectedValue("Mocking Retrieve Status API Error");
 
         const { getByTestId } = render(
-            <Main />
+            <Router>
+               <Main />
+            </Router>
         );
 
         const imageElement = getByTestId("coffeeImage");
@@ -67,7 +74,9 @@ describe("Main Container Background",() => {
         api.retrieveStatus.mockResolvedValue("no")
 
         const { getByTestId } = render(
-            <Main />
+            <Router>
+               <Main />
+            </Router>
         );
 
         const imageElement = getByTestId("coffeeImage");
@@ -78,7 +87,9 @@ describe("Main Container Background",() => {
         api.retrieveStatus.mockResolvedValue("enroute")
 
         const { getByTestId } = render(
-            <Main />
+            <Router>
+               <Main />
+            </Router>
         );
 
         const imageElement = getByTestId("coffeeImage");
@@ -89,7 +100,9 @@ describe("Main Container Background",() => {
         api.retrieveStatus.mockResolvedValue("yes")
 
         const { getByTestId } = render(
-            <Main />
+            <Router>
+               <Main />
+            </Router>
         );
 
         const imageElement = getByTestId("coffeeImage");

@@ -586,6 +586,10 @@ body {
   position: relative;
 }
 
+.bottom-0 {
+  bottom: 0px;
+}
+
 .right-12 {
   right: 3rem;
 }
@@ -606,11 +610,6 @@ body {
 .my-1 {
   margin-top: 0.25rem;
   margin-bottom: 0.25rem;
-}
-
-.my-4 {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
 }
 
 .mb-4 {
@@ -665,6 +664,10 @@ body {
   height: 2rem;
 }
 
+.h-\[36px\] {
+  height: 36px;
+}
+
 .h-full {
   height: 100%;
 }
@@ -699,6 +702,10 @@ body {
   width: fit-content;
 }
 
+.w-full {
+  width: 100%;
+}
+
 .animate-none {
   -webkit-animation: none;
           animation: none;
@@ -725,6 +732,10 @@ body {
 
 .flex-col {
   flex-direction: column;
+}
+
+.items-end {
+  align-items: flex-end;
 }
 
 .items-center {
@@ -821,30 +832,17 @@ body {
   padding: 0.5rem;
 }
 
-.p-16 {
-  padding: 4rem;
-}
-
 .px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
 }
 
-.py-16 {
-  padding-top: 4rem;
-  padding-bottom: 4rem;
+.pb-12 {
+  padding-bottom: 3rem;
 }
 
 .pt-16 {
   padding-top: 4rem;
-}
-
-.pb-8 {
-  padding-bottom: 2rem;
-}
-
-.pb-12 {
-  padding-bottom: 3rem;
 }
 
 .text-center {

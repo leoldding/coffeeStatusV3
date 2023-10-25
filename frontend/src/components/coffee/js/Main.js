@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { retrieveStatus } from "./api";
+import CoffeeFooter from "./Footer";
 
 function CoffeeMain() {
     const [status, setStatus] = useState("blank");
@@ -72,6 +73,7 @@ function CoffeeMain() {
                     <div>Red = "No"</div>
                 </div>
             </div>
+            <CoffeeFooter link={"/admin"} text={"Admin Login"}/>
         </div>
     )
 }
