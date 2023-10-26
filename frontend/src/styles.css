@@ -680,6 +680,10 @@ body {
   height: 100vh;
 }
 
+.h-32 {
+  height: 8rem;
+}
+
 .min-h-\[calc\(100\%-36px\)\] {
   min-height: calc(100% - 36px);
 }
@@ -864,6 +868,10 @@ body {
   padding-top: 4rem;
 }
 
+.pb-8 {
+  padding-bottom: 2rem;
+}
+
 .text-center {
   text-align: center;
 }
@@ -982,6 +990,10 @@ body {
 
   .md\:h-96 {
     height: 24rem;
+  }
+
+  .md\:h-12 {
+    height: 3rem;
   }
 
   .md\:w-64 {
