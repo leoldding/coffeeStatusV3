@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import AdminLogin from "./AdminLogin.js";
-import AdminPanel from "./AdminPanel.js";
+import AdminLogin from "./AdminLogin";
+import AdminPanel from "./AdminPanel";
 import { checkSession } from "./api";
 
 function CoffeeAdmin() {

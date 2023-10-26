@@ -1,6 +1,7 @@
 import "@testing-library/jest-dom";
 import React from "react";
 import {render, waitFor} from "@testing-library/react";
+import { BrowserRouter as Router } from "react-router-dom";
 import Admin from "./../js/Admin.js";
 import * as api from "./../js/api";
 
@@ -15,7 +16,9 @@ describe("Admin", () => {
         api.checkSession.mockRejectedValue("Mocking No Active Admin Session");
 
         const { getByText } = render(
-            <Admin />
+            <Router>
+                <Admin />
+            </Router>
         )
 
         await waitFor(() => expect(getByText("Admin Login")).toBeInTheDocument());
@@ -25,7 +28,9 @@ describe("Admin", () => {
         api.checkSession.mockResolvedValue("Mocking Active Admin Session");
 
         const { getByText } = render(
-           <Admin />
+            <Router>
+                <Admin />
+            </Router>
         )
 
         await waitFor(() => expect(getByText("Admin Panel")).toBeInTheDocument());
