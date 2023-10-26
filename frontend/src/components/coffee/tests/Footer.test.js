@@ -8,12 +8,19 @@ describe("Footer", () => {
     it("renders correctly", () => {
         const { getByText } = render(
             <Router>
-                <Footer link={"/testRoute"} text={"testText"}/>
+                <Footer />
             </Router>
         );
 
-        const linkElement = getByText("testText");
+        let linkElement = getByText("Home");
         expect(linkElement).toBeInTheDocument();
-        expect(linkElement).toHaveAttribute("href", "/testRoute")
+        expect(linkElement).toHaveAttribute("href", "/");
+
+        linkElement = getByText("Admin");
+        expect(linkElement).toBeInTheDocument();
+        expect(linkElement).toHaveAttribute("href", "/admin")
+
+        const spacerElement = getByText("|");
+        expect(spacerElement).toBeInTheDocument();
     });
 });

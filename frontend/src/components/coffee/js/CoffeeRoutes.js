@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import CoffeeMain from "./Main"
 import CoffeeAdmin from "./Admin"
+import CoffeeFooter from "./Footer";
 
 function App() {
     // set index elements
@@ -22,6 +23,7 @@ function App() {
                 <Route path={"admin"} element={<CoffeeAdmin />} />
                 <Route path={"*"} element={<Navigate to="" replace />} />
             </Routes>
+            <CoffeeFooter />
         </div>
     )
 }

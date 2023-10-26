@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import AdminLogin from "./AdminLogin";
 import AdminPanel from "./AdminPanel";
-import CoffeeFooter from "./Footer";
 import { checkSession } from "./api";
 
 function CoffeeAdmin() {
@@ -23,17 +22,11 @@ function CoffeeAdmin() {
 
     if (!loggedIn) {
         return (
-            <div>
-                <AdminLogin setLoggedIn={setLoggedIn}/>
-                <CoffeeFooter link={"/"} text={"Home"}/>
-            </div>
+            <AdminLogin setLoggedIn={setLoggedIn}/>
         )
     } else {
         return(
-            <div>
-                <AdminPanel setLoggedIn={setLoggedIn}/>
-                <CoffeeFooter link={"/"} text={"Home"}/>
-            </div>
+            <AdminPanel setLoggedIn={setLoggedIn}/>
         )
     }
 }
