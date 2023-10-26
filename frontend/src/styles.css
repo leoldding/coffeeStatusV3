@@ -872,6 +872,10 @@ body {
   padding-bottom: 2rem;
 }
 
+.pb-6 {
+  padding-bottom: 1.5rem;
+}
+
 .text-center {
   text-align: center;
 }
@@ -996,6 +1000,10 @@ body {
     height: 3rem;
   }
 
+  .md\:h-10 {
+    height: 2.5rem;
+  }
+
   .md\:w-64 {
     width: 16rem;
   }
@@ -1008,6 +1016,12 @@ body {
     --tw-space-y-reverse: 0;
     margin-top: calc(4rem * calc(1 - var(--tw-space-y-reverse)));
     margin-bottom: calc(4rem * var(--tw-space-y-reverse));
+  }
+
+  .md\:space-y-14 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-y-reverse: 0;
+    margin-top: calc(3.5rem * calc(1 - var(--tw-space-y-reverse)));
+    margin-bottom: calc(3.5rem * var(--tw-space-y-reverse));
   }
 
   .md\:text-2xl {
