@@ -44,7 +44,7 @@ function AdminPanel(props) {
     }, [updateCounter])
 
     return (
-        <div className={"min-h-[calc(100%-36px)]"}>
+        <div className={"min-h-[calc(100%-36px)] py-8"}>
             <h1 className={"text-4xl md:text-8xl pt-16 pb-12 px-4 text-center font-medium"}>Admin Panel</h1>
             <div className={"h-full flex flex-col mx-auto justify-center items-center space-y-8 md:space-y-16"}>
                 <div data-testid={"statusMessage"} className={"text-center text-xs md:text-lg mx-auto h-4"}>{updateMessage}</div>

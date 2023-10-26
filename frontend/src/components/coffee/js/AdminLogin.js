@@ -49,7 +49,7 @@ function AdminLogin(props) {
     }
 
     return (
-        <div className={"min-h-[calc(100%-36px)]"}>
+        <div className={"min-h-[calc(100%-36px)] py-8"}>
             <h1 className={"text-4xl md:text-8xl pt-16 pb-12 px-4 text-center font-medium"}>Admin Login</h1>
             <form onSubmit={credentialSubmit} data-testid={"loginForm"} className={"h-full flex flex-col mx-auto justify-center items-center space-y-8 md:space-y-16 mt-8 md:mt-16"}>
                 <div className={"mx-auto"}>
