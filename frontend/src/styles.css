@@ -754,8 +754,16 @@ body {
   justify-content: flex-start;
 }
 
+.justify-end {
+  justify-content: flex-end;
+}
+
 .justify-center {
   justify-content: center;
+}
+
+.justify-items-end {
+  justify-items: end;
 }
 
 .space-y-8 > :not([hidden]) ~ :not([hidden]) {
